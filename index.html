@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="application">
+        <h1>
+            Vue ToDo List
+        </h1>
+        <div class="container">
+            <div class="header">
+                <ul class="headerUnorderedList">
+                    <li class="headerUnorderedListItem">
+                        <div class="label labelValueNumber">
+                            <span class="labelName">Tasks</span>
+                            <span class="labelValue">0</span>
+                        </div>
+                    </li>
+                    <li class="headerUnorderedListItem">
+                        <div class="label labelValueNumber">
+                            <span class="labelName">Tasks Done</span>
+                            <span class="labelValue">0</span>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="headerUnorderedList">
+                    <li class="headerUnorderedListItem">
+                        <button class="button buttonError buttonSmall">
+                            <span class="button_Icon">
+                                <i class="icon fa-solid fa-trash"></i>
+                            </span>
+                            <span class="buttonText">Tasks Done</span>
+                        </button>
+                    </li>
+                    <li class="headerUnorderedListItem">
+                        <button class="button buttonError buttonSmall">
+                            <span class="button_Icon">
+                                <i class="icon fa-solid fa-trash"></i>
+                            </span>
+                            <span class="buttonText">Tasks</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content">
+                <div class="taskListContainer">
+
+                </div>
+                <div class="newTask">
+                    <div class="newTaskField">
+                        <input type="text" placeholder="New task" autofocus="autofocus" class="newTaskInput">
+                        <button class="button newTaskAddButton">
+                            <span class="buttonIcon">
+                                <i class="icon fa-solid fa-circle-plus"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://kit.fontawesome.com/82deaf27ae.js" crossorigin="anonymous"></script>
+</html>
