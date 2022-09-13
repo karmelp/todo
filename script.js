@@ -1,18 +1,28 @@
-//Kasutaja saab lugeda kõiki ülesandeid - ülesannete pealkirja, kas on tehtud/tegemata.
-        const tasks = ['Ülesanne1', 'Ülesanne 2', 'Ülesanne 3'];
+//Kasutaja saab lugeda kõiki ülesandeid -
+        // Ülesannete pealkirja
+        const taskList = document.querySelector('.taskList');
+        const tasks = [
+            {title: 'Exercise 1', done: true},
+            {title: 'Exercise 2', done: true},
+            {title: 'Exercise 3', done: false},
+        ];
 
-        function readTask() {
-            const taskList = document.querySelector('.taskList');
+        function showTask(task) {
             const li = document.createElement('li')
-            li.appendChild(document.createTextNode(tasks));;
+            li.appendChild(document.createTextNode(task.title));;
             li.setAttribute("class", "taskListItem");
             taskList.appendChild(li);
-            console.log(taskList)
         } 
 
         tasks.forEach(task => {
-            readTask()
+            showTask(task)
         });
+
+        // Kas on tehtud/tegemata.
+        const isDone = () => {
+            task.done === true ? console.log('Done') : console.log('Not done');
+        }
+        
 
 
 // Kasutaja näeb, mitu ülesannet on tehtud, mitu on tegemata.
