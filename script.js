@@ -1,13 +1,13 @@
 //Kasutaja saab lugeda kõiki ülesandeid -
         // Ülesannete pealkirja
-        const taskList = document.querySelector('.taskList');
         const tasks = [
-            {title: 'Exercise 1', done: true},
-            {title: 'Exercise 2', done: true},
-            {title: 'Exercise 3', done: false},
+            {title: 'Exercise 1', isDone: true},
+            {title: 'Exercise 2', isDone: true},
+            {title: 'Exercise 3', isDone: false},
         ];
 
         function showTask(task) {
+            const taskList = document.querySelector('.taskList');
             const li = document.createElement('li')
             li.appendChild(document.createTextNode(task.title));;
             li.setAttribute("class", "taskListItem");
@@ -19,9 +19,7 @@
         });
 
         // Kas on tehtud/tegemata.
-        const isDone = () => {
-            task.done === true ? console.log('Done') : console.log('Not done');
-        }
+        
         
 
 
