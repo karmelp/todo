@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <script src="https://kit.fontawesome.com/82deaf27ae.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
     <div class="application">
@@ -50,11 +52,13 @@
 
             <div class="content">
                 <div class="taskListContainer">
-
+                    <ul class="taskList">
+                    </ul>
                 </div>
+
                 <div class="newTask">
                     <div class="newTaskField">
-                        <input type="text" placeholder="New task" autofocus="autofocus" class="newTaskInput">
+                        <input type="text" placeholder="New task" autofocus="autofocus" class="newTaskInput" id="newTaskInput">
                         <button class="button newTaskAddButton">
                             <span class="buttonIcon">
                                 <i class="icon fa-solid fa-circle-plus"></i>
@@ -66,5 +70,4 @@
         </div>
     </div>
 </body>
-<script src="https://kit.fontawesome.com/82deaf27ae.js" crossorigin="anonymous"></script>
 </html>
