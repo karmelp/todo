@@ -1,5 +1,4 @@
-//Kasutaja saab lugeda kõiki ülesandeid -
-        // Ülesannete pealkirja
+// Kasutaja saab lugeda kõiki ülesandeid - pealkirja ja staatust
         const tasks = [
             {title: 'Exercise 1', isDone: 'done'},
             {title: 'Exercise 2', isDone: 'done'},
@@ -21,51 +20,49 @@
             taskList.appendChild(taskListItem) //pane taskide konteiner elemendi sisse taski element
         }
 
-       /* function showTask(task) {
-            // vöta HTMList tasklist klassiga element
-            const taskList = document.querySelector('.taskList')
-            
-            // loo list item staatuse jaoks
-            const taskStatusText = document.createElement("li");
-
-            // loo list item pealkirja jaoks
-            const taskTitleText = document.createElement("li");
-
-                // loo div nimega taskPreview
-                const taskPreview = document.createElement("div")
-                // loo class taskPreview
-                taskPreview.setAttribute("class", "taskPreview")
-
-            // pane pealkirja list itemi sisse lapselement, mis on tekst "text.title"
-            taskTitleText.appendChild(document.createTextNode(task.title));
-
-            // pane staatuse list itemi sisse lapselement, mille tekst on kas "tehtud" vöi "tegemata" olenevalt staatusest
-            taskStatusText.appendChild(document.createTextNode(task.isDone));
-
-            // lisa pealkirja elemendile klass "taskListItem"
-            taskTitleText.setAttribute("class","taskListItem");
-
-            // lisa staatuse elemendile klass "taskListItem"
-            taskStatusText.setAttribute("class", "taskListItem")
-
-            // lisa tasklist klassiga elemendile pealkirja element
-            taskList.appendChild(taskTitleText);
-
-            // Lisa tasklist klassiga elemendile staatuse element
-            taskList.appendChild(taskStatusText)
-
-                //lisa taskPreview klassiga divi sisse lapseelemendid
-                taskPreview.appendChild(li)
-        } 
-        */
-
         tasks.forEach(task => {
             showTask(task)
         });
 
 
+// Kasutaja näeb, mitu ülesannet on tehtud, mitu on taske kokku.
+        
+        function allTasks() {
+            // võta HTMList allTasksContainer klass
+        const allTasksContainer = document.querySelector('.allTasksContainer');
+        
+        // loo span element - klassidega labelValue & allTasksValue
+        const span1 = document.createElement('span');
+            span1.setAttribute('class', 'labelValue');
 
-// Kasutaja näeb, mitu ülesannet on tehtud, mitu on tegemata.
+        // sisesta allTasksValue elemendi sisse number
+        const labelValue = document.createTextNode('15');
+
+        // pane allTasksValue element allTasksContainer'i sisse
+        allTasksContainer.appendChild(labelValue);
+        }
+        allTasks();
+
+
+
+        
+        function doneTasks() {
+            // võta HTMList allTasksContainer klass
+        const doneTasksContainer = document.querySelector('.doneTasksContainer');
+        
+        // loo span element - klassidega labelValue & allTasksValue
+        const span2 = document.createElement('span');
+            span2.setAttribute('class', 'labelValue');
+
+        // sisesta allTasksValue elemendi sisse number
+        labelValue.createTextNode('3');
+
+        // pane allTasksValue element allTasksContainer'i sisse
+        doneTasksContainer.appendChild(labelValue);
+        }
+        doneTasks();
+
+        
 
 
 // Kasutaja saab lisada uue ülesande.
