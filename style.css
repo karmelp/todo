@@ -140,6 +140,15 @@ h1 {
 
 .taskListItem {
     padding: 5px;
+    display: flex;
+}
+
+.taskListItemTitle {
+    padding-right: 5px;
+}
+
+.taskListItemStatus {
+    padding-right: 5px;
 }
 
 .taskPreview {

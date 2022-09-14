@@ -7,38 +7,18 @@
         ];
 
         function showTask(task) {
-            // võta HTMList taskide konteinerelement
-            const taskList = document.querySelector('.taskList');
-
-            // loo list element taski jaoks
-            const taskListItem = document.createElement('li')
-                // lisa taski list elemendile klass
-                taskListItem.setAttribute('class', 'taskListItem')
-            
-            //loo div element taski staatuse jaoks
-            const taskListItemStatus = document.createElement('div')
-                // lisa sellele klass
-                taskListItemStatus.setAttribute('class', 'taskListItemStatus')
-
-            // loo div element taski pealkirja jaoks
-            const taskListItemTitle = document.createElement('div')
-                // lisa sellele klass
-                taskListItemTitle.setAttribute('class', 'taskListItemTitle')
-
-            // pane taski pealkirja elemendi sisse tekst taski pealkirjaga
-            taskListItemTitle.textContent = task.title
-
-            // pane taski staatuse elemendi sisse tekst kas "tehtud" või "tegemata" olenevalt staatusest
-            taskListItemStatus.textContent = task.isDone
-
-            //pane taski pealkirja element taski elemendi sisse
-            taskListItem.appendChild(taskListItemTitle)
-
-            //pane taski staatuse element taski elemendi sisse
-            taskListItem.appendChild(taskListItemStatus)
-
-            //pane taskide konteiner elemendi sisse taski element
-            taskList.appendChild(taskListItem)
+            const taskList = document.querySelector('.taskList'); // võta HTMList taskide konteinerelement
+            const taskListItem = document.createElement('li') // loo list element taski jaoks
+                taskListItem.setAttribute('class', 'taskListItem') // lisa taski list elemendile klass
+            const taskListItemStatus = document.createElement('div') //loo div element taski staatuse jaoks
+                taskListItemStatus.setAttribute('class', 'taskListItemStatus') // lisa sellele klass
+            const taskListItemTitle = document.createElement('div') // loo div element taski pealkirja jaoks
+                taskListItemTitle.setAttribute('class', 'taskListItemTitle') // lisa sellele klass
+            taskListItemTitle.textContent = task.title // pane taski pealkirja elemendi sisse tekst taski pealkirjaga
+            taskListItemStatus.textContent = task.isDone // pane taski staatuse elemendi sisse tekst kas "tehtud" või "tegemata" olenevalt staatusest
+            taskListItem.appendChild(taskListItemTitle) //pane taski pealkirja element taski elemendi sisse
+            taskListItem.appendChild(taskListItemStatus) //pane taski staatuse element taski elemendi sisse
+            taskList.appendChild(taskListItem) //pane taskide konteiner elemendi sisse taski element
         }
 
        /* function showTask(task) {
