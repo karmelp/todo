@@ -7,6 +7,41 @@
         ];
 
         function showTask(task) {
+            // võta HTMList taskide konteinerelement
+            const taskList = document.querySelector('.taskList');
+
+            // loo list element taski jaoks
+            const taskListItem = document.createElement('li')
+                // lisa taski list elemendile klass
+                taskListItem.setAttribute('class', 'taskListItem')
+            
+            //loo div element taski staatuse jaoks
+            const taskListItemStatus = document.createElement('div')
+                // lisa sellele klass
+                taskListItemStatus.setAttribute('class', 'taskListItemStatus')
+
+            // loo div element taski pealkirja jaoks
+            const taskListItemTitle = document.createElement('div')
+                // lisa sellele klass
+                taskListItemTitle.setAttribute('class', 'taskListItemTitle')
+
+            // pane taski pealkirja elemendi sisse tekst taski pealkirjaga
+            taskListItemTitle.textContent = task.title
+
+            // pane taski staatuse elemendi sisse tekst kas "tehtud" või "tegemata" olenevalt staatusest
+            taskListItemStatus.textContent = task.isDone
+
+            //pane taski pealkirja element taski elemendi sisse
+            taskListItem.appendChild(taskListItemTitle)
+
+            //pane taski staatuse element taski elemendi sisse
+            taskListItem.appendChild(taskListItemStatus)
+
+            //pane taskide konteiner elemendi sisse taski element
+            taskList.appendChild(taskListItem)
+        }
+
+       /* function showTask(task) {
             // vöta HTMList tasklist klassiga element
             const taskList = document.querySelector('.taskList')
             
@@ -15,6 +50,11 @@
 
             // loo list item pealkirja jaoks
             const taskTitleText = document.createElement("li");
+
+                // loo div nimega taskPreview
+                const taskPreview = document.createElement("div")
+                // loo class taskPreview
+                taskPreview.setAttribute("class", "taskPreview")
 
             // pane pealkirja list itemi sisse lapselement, mis on tekst "text.title"
             taskTitleText.appendChild(document.createTextNode(task.title));
@@ -33,7 +73,11 @@
 
             // Lisa tasklist klassiga elemendile staatuse element
             taskList.appendChild(taskStatusText)
+
+                //lisa taskPreview klassiga divi sisse lapseelemendid
+                taskPreview.appendChild(li)
         } 
+        */
 
         tasks.forEach(task => {
             showTask(task)
