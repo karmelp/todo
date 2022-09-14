@@ -21,44 +21,6 @@
             taskList.appendChild(taskListItem) //pane taskide konteiner elemendi sisse taski element
         }
 
-       /* function showTask(task) {
-            // vöta HTMList tasklist klassiga element
-            const taskList = document.querySelector('.taskList')
-            
-            // loo list item staatuse jaoks
-            const taskStatusText = document.createElement("li");
-
-            // loo list item pealkirja jaoks
-            const taskTitleText = document.createElement("li");
-
-                // loo div nimega taskPreview
-                const taskPreview = document.createElement("div")
-                // loo class taskPreview
-                taskPreview.setAttribute("class", "taskPreview")
-
-            // pane pealkirja list itemi sisse lapselement, mis on tekst "text.title"
-            taskTitleText.appendChild(document.createTextNode(task.title));
-
-            // pane staatuse list itemi sisse lapselement, mille tekst on kas "tehtud" vöi "tegemata" olenevalt staatusest
-            taskStatusText.appendChild(document.createTextNode(task.isDone));
-
-            // lisa pealkirja elemendile klass "taskListItem"
-            taskTitleText.setAttribute("class","taskListItem");
-
-            // lisa staatuse elemendile klass "taskListItem"
-            taskStatusText.setAttribute("class", "taskListItem")
-
-            // lisa tasklist klassiga elemendile pealkirja element
-            taskList.appendChild(taskTitleText);
-
-            // Lisa tasklist klassiga elemendile staatuse element
-            taskList.appendChild(taskStatusText)
-
-                //lisa taskPreview klassiga divi sisse lapseelemendid
-                taskPreview.appendChild(li)
-        } 
-        */
-
         tasks.forEach(task => {
             showTask(task)
         });
