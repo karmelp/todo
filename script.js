@@ -29,40 +29,38 @@
         
         function allTasks() {
             // võta HTMList allTasksContainer klass
-        const allTasksContainer = document.querySelector('.allTasksContainer');
+        const allTasksLabelValue = document.querySelector('.allTasksLabelValue');
         
-        // loo span element - klassidega labelValue & allTasksValue
-        const span1 = document.createElement('span');
-            span1.setAttribute('class', 'labelValue');
+        // loo p element - klassidega labelValue & allTasksValue
+        const p = document.createElement('p');
+            p.setAttribute('class', 'allTasksLabelValueNumber');
 
         // sisesta allTasksValue elemendi sisse number
-        const labelValue = document.createTextNode('15');
+        const allTasksLabelValueNumber = document.createTextNode(3);
 
         // pane allTasksValue element allTasksContainer'i sisse
-        allTasksContainer.appendChild(labelValue);
+        allTasksLabelValue.appendChild(allTasksLabelValueNumber);
         }
         allTasks();
 
 
-
-        
         function doneTasks() {
             // võta HTMList allTasksContainer klass
-        const doneTasksContainer = document.querySelector('.doneTasksContainer');
+        const doneTasksLabelValue = document.querySelector('.doneTasksLabelValue');
         
-        // loo span element - klassidega labelValue & allTasksValue
-        const span2 = document.createElement('span');
-            span2.setAttribute('class', 'labelValue');
+        // loo p element - klassidega labelValue & allTasksValue
+        const p = document.createElement('p');
+            p.setAttribute('class', 'doneTasksLabelValueNumber');
 
         // sisesta allTasksValue elemendi sisse number
-        labelValue.createTextNode('3');
+        const doneTasksLabelValueNumber = document.createTextNode(1);
 
         // pane allTasksValue element allTasksContainer'i sisse
-        doneTasksContainer.appendChild(labelValue);
+        doneTasksLabelValue.appendChild(doneTasksLabelValueNumber);
         }
         doneTasks();
 
-        
+       
 
 
 // Kasutaja saab lisada uue ülesande.
