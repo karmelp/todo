@@ -3,7 +3,10 @@
             {title: 'Exercise 1', isDone: 'done'},
             {title: 'Exercise 2', isDone: 'done'},
             {title: 'Exercise 3', isDone: 'not done'},
+            {title: 'Exercise 4', isDone: 'not done'},
+            {title: 'Exercise 5', isDone: 'not done'},
         ];
+
 
         function showTask(task) {
             const taskList = document.querySelector('.taskList'); // võta HTMList taskide konteinerelement
@@ -28,45 +31,7 @@
         });
 
 
-// Kasutaja näeb, mitu ülesannet on tehtud, mitu on taske kokku.
-        
-        function allTasks() {
-            // võta HTMList allTasksContainer klass
-        const allTasksLabelValue = document.querySelector('.allTasksLabelValue');
-        
-        // loo p element - klassidega labelValue & allTasksValue
-        const p = document.createElement('p');
-            p.setAttribute('class', 'allTasksLabelValueNumber');
-
-        // sisesta allTasksValue elemendi sisse number
-        const allTasksLabelValueNumber = document.createTextNode(3);
-
-        // pane allTasksValue element allTasksContainer'i sisse
-        allTasksLabelValue.appendChild(allTasksLabelValueNumber);
-        }
-        allTasks();
-
-
-        function doneTasks() {
-            // võta HTMList allTasksContainer klass
-        const doneTasksLabelValue = document.querySelector('.doneTasksLabelValue');
-        
-        // loo p element - klassidega labelValue & allTasksValue
-        const p = document.createElement('p');
-            p.setAttribute('class', 'doneTasksLabelValueNumber');
-
-        // sisesta allTasksValue elemendi sisse number
-        const doneTasksLabelValueNumber = document.createTextNode(2);
-
-        // pane allTasksValue element allTasksContainer'i sisse
-        doneTasksLabelValue.appendChild(doneTasksLabelValueNumber);
-        }
-        doneTasks()
-
-       
-
-
-// Kasutaja saab lisada uue ülesande.
+        // Kasutaja saab lisada uue ülesande.
 
         // klikkides newTaskAddButton'it tee järgmist
         document.querySelector('.newTaskAddButton').onclick = function() {
@@ -83,8 +48,8 @@
                 const taskListItemTitle = document.createElement('div') // loo div element taski pealkirja jaoks
                     taskListItemTitle.setAttribute('class', 'taskListItemTitle') // lisa sellele klass
                 
-                const taskTitle = document.getElementById('newTaskInput').value;
-                tasks.push(taskTitle)
+                const taskTitle = document.getElementById('newTaskInput').value; // võta input value 
+                tasks.push({title: taskTitle, isDone: 'done'}) // ja saada see value arraysse
                 taskListItemTitle.textContent = taskTitle  // pane taski pealkirja elemendi sisse tekst taski pealkirjaga
                 taskPreview.appendChild(taskListItemTitle) //pane taski pealkirja element taski elemendi sisse
                 taskListItem.appendChild(taskPreview)
@@ -92,6 +57,50 @@
             }
             const btn = document.getElementById('newTaskInput').value = '';
         }
+
+
+// Kasutaja näeb, mitu on taske kokku.
+        
+        function allTasks() {
+            // võta HTMList allTasksContainer klass
+        const allTasksLabelValue = document.querySelector('.allTasksLabelValue');
+        
+        // loo p element - klassidega labelValue & allTasksValue
+        const p = document.createElement('p');
+            p.setAttribute('class', 'allTasksLabelValueNumber');
+        
+        // sisesta allTasksValue elemendi sisse number
+        const allTasksLabelValueNumber = document.createTextNode(tasks.length);
+
+        // pane allTasksValue element allTasksContainer'i sisse
+        allTasksLabelValue.appendChild(allTasksLabelValueNumber);
+        }
+        allTasks();
+
+
+        
+// Kasutaja näeb, mitu ülesannet on tehtud
+        function doneTasks() {
+            // võta HTMList doneTasksContainer klass
+        const doneTasksLabelValue = document.querySelector('.doneTasksLabelValue');
+        
+        // loo p element - klassidega labelValue & allTasksValue
+        const p = document.createElement('p');
+            p.setAttribute('class', 'doneTasksLabelValueNumber');
+        
+            //for loop, et loendada kokku tehtud taskid
+                let doneTasksCounter = 0;
+                for (let i = 0; i < tasks.length; i++) {
+                if (tasks[i].isDone === 'done') doneTasksCounter++;
+                }
+
+        // sisesta allTasksValue elemendi sisse number
+        const doneTasksLabelValueNumber = document.createTextNode(doneTasksCounter);
+
+        // pane allTasksValue element allTasksContainer'i sisse
+        doneTasksLabelValue.appendChild(doneTasksLabelValueNumber);
+        }
+        doneTasks()
 
 
         
