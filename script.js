@@ -11,7 +11,6 @@
                 taskListItem.setAttribute('class', 'taskListItem') // lisa taski list elemendile klass
             const taskPreview = document.createElement('div')
                 taskPreview.setAttribute('class', 'taskPreview')
-            
             const taskListItemStatus = document.createElement('div') //loo div element taski staatuse jaoks
                 taskListItemStatus.setAttribute('class', 'taskListItemStatus') // lisa sellele klass
             const taskListItemTitle = document.createElement('div') // loo div element taski pealkirja jaoks
@@ -85,6 +84,7 @@
                     taskListItemTitle.setAttribute('class', 'taskListItemTitle') // lisa sellele klass
                 
                 const taskTitle = document.getElementById('newTaskInput').value;
+                tasks.push(taskTitle)
                 taskListItemTitle.textContent = taskTitle  // pane taski pealkirja elemendi sisse tekst taski pealkirjaga
                 taskPreview.appendChild(taskListItemTitle) //pane taski pealkirja element taski elemendi sisse
                 taskListItem.appendChild(taskPreview)
