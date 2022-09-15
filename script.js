@@ -53,18 +53,38 @@
             p.setAttribute('class', 'doneTasksLabelValueNumber');
 
         // sisesta allTasksValue elemendi sisse number
-        const doneTasksLabelValueNumber = document.createTextNode(1);
+        const doneTasksLabelValueNumber = document.createTextNode(2);
 
         // pane allTasksValue element allTasksContainer'i sisse
         doneTasksLabelValue.appendChild(doneTasksLabelValueNumber);
         }
-        doneTasks();
+        doneTasks()
 
        
 
 
 // Kasutaja saab lisada uue ülesande.
 
+        // klikkides newTaskAddButton'it tee järgmist
+        document.querySelector('.newTaskAddButton').onclick = function() {
+            // kui input field on tühi, siis ütle inimesele, et tühjana ei saa lisada taski
+            if(document.querySelector('.newTaskField input').value.length == 0){
+                alert("Write a task first!")
+            } else {
+                // vastasel juhul võta HTMList .taskList konteiner
+                const taskList = document.querySelector('.taskList'); // võta HTMList taskide konteinerelement
+                const taskListItem = document.createElement('li') // loo list element taski jaoks
+                    taskListItem.setAttribute('class', 'taskListItem') // lisa taski list elemendile klass
+            
+                const taskListItemTitle = document.createElement('div') // loo div element taski pealkirja jaoks
+                    taskListItemTitle.setAttribute('class', 'taskListItemTitle') // lisa sellele klass
+                
+                const taskTitle = document.getElementById('newTaskInput').value;
+                taskListItemTitle.textContent = taskTitle  // pane taski pealkirja elemendi sisse tekst taski pealkirjaga
+                taskListItem.appendChild(taskListItemTitle) //pane taski pealkirja element taski elemendi sisse
+                taskList.appendChild(taskListItem) //pane taskide konteiner elemendi sisse taski element
+            }
+        }
 
 // Kasutaja saab märkida ülesande tehtuks.
 
