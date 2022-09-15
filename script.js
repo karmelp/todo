@@ -1,10 +1,7 @@
 // Kasutaja saab lugeda kõiki ülesandeid - pealkirja ja staatust
         const tasks = [
             {title: 'Exercise 1', isDone: 'done'},
-            {title: 'Exercise 2', isDone: 'done'},
-            {title: 'Exercise 3', isDone: 'not done'},
-            {title: 'Exercise 4', isDone: 'not done'},
-            {title: 'Exercise 5', isDone: 'not done'},
+            {title: 'Exercise 2', isDone: 'not done'},
         ];
 
 
@@ -50,6 +47,7 @@
                 
                 const taskTitle = document.getElementById('newTaskInput').value; // võta input value 
                 tasks.push({title: taskTitle, isDone: 'done'}) // ja saada see value arraysse
+                showAllTasks();
                 taskListItemTitle.textContent = taskTitle  // pane taski pealkirja elemendi sisse tekst taski pealkirjaga
                 taskPreview.appendChild(taskListItemTitle) //pane taski pealkirja element taski elemendi sisse
                 taskListItem.appendChild(taskPreview)
@@ -61,21 +59,18 @@
 
 // Kasutaja näeb, mitu on taske kokku.
         
-        function allTasks() {
+        function showAllTasks() {
             // võta HTMList allTasksContainer klass
         const allTasksLabelValue = document.querySelector('.allTasksLabelValue');
         
         // loo p element - klassidega labelValue & allTasksValue
         const p = document.createElement('p');
-            p.setAttribute('class', 'allTasksLabelValueNumber');
+        p.setAttribute('class', 'allTasksLabelValueNumber');
         
         // sisesta allTasksValue elemendi sisse number
-        const allTasksLabelValueNumber = document.createTextNode(tasks.length);
-
-        // pane allTasksValue element allTasksContainer'i sisse
-        allTasksLabelValue.appendChild(allTasksLabelValueNumber);
+        allTasksLabelValue.textContent = tasks.length;
         }
-        allTasks();
+
 
 
         
@@ -95,10 +90,7 @@
                 }
 
         // sisesta allTasksValue elemendi sisse number
-        const doneTasksLabelValueNumber = document.createTextNode(doneTasksCounter);
-
-        // pane allTasksValue element allTasksContainer'i sisse
-        doneTasksLabelValue.appendChild(doneTasksLabelValueNumber);
+        p.textContent = doneTasksCounter;
         }
         doneTasks()
 
