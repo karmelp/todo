@@ -9,14 +9,18 @@
             const taskList = document.querySelector('.taskList'); // võta HTMList taskide konteinerelement
             const taskListItem = document.createElement('li') // loo list element taski jaoks
                 taskListItem.setAttribute('class', 'taskListItem') // lisa taski list elemendile klass
+            const taskPreview = document.createElement('div')
+                taskPreview.setAttribute('class', 'taskPreview')
+            
             const taskListItemStatus = document.createElement('div') //loo div element taski staatuse jaoks
                 taskListItemStatus.setAttribute('class', 'taskListItemStatus') // lisa sellele klass
             const taskListItemTitle = document.createElement('div') // loo div element taski pealkirja jaoks
                 taskListItemTitle.setAttribute('class', 'taskListItemTitle') // lisa sellele klass
             taskListItemTitle.textContent = task.title // pane taski pealkirja elemendi sisse tekst taski pealkirjaga
             taskListItemStatus.textContent = task.isDone // pane taski staatuse elemendi sisse tekst kas "tehtud" või "tegemata" olenevalt staatusest
-            taskListItem.appendChild(taskListItemTitle) //pane taski pealkirja element taski elemendi sisse
-            taskListItem.appendChild(taskListItemStatus) //pane taski staatuse element taski elemendi sisse
+            taskPreview.appendChild(taskListItemTitle) //pane taski pealkirja element taski elemendi sisse
+            taskPreview.appendChild(taskListItemStatus) //pane taski staatuse element taski elemendi sisse
+            taskListItem.appendChild(taskPreview)
             taskList.appendChild(taskListItem) //pane taskide konteiner elemendi sisse taski element
         }
 
@@ -75,13 +79,15 @@
                 const taskList = document.querySelector('.taskList'); // võta HTMList taskide konteinerelement
                 const taskListItem = document.createElement('li') // loo list element taski jaoks
                     taskListItem.setAttribute('class', 'taskListItem') // lisa taski list elemendile klass
-            
+                const taskPreview = document.createElement('div')
+                    taskPreview.setAttribute('class', 'taskPreview')
                 const taskListItemTitle = document.createElement('div') // loo div element taski pealkirja jaoks
                     taskListItemTitle.setAttribute('class', 'taskListItemTitle') // lisa sellele klass
                 
                 const taskTitle = document.getElementById('newTaskInput').value;
                 taskListItemTitle.textContent = taskTitle  // pane taski pealkirja elemendi sisse tekst taski pealkirjaga
-                taskListItem.appendChild(taskListItemTitle) //pane taski pealkirja element taski elemendi sisse
+                taskPreview.appendChild(taskListItemTitle) //pane taski pealkirja element taski elemendi sisse
+                taskListItem.appendChild(taskPreview)
                 taskList.appendChild(taskListItem) //pane taskide konteiner elemendi sisse taski element
             }
             const btn = document.getElementById('newTaskInput').value = '';
