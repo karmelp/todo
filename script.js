@@ -84,8 +84,11 @@
                 taskListItem.appendChild(taskListItemTitle) //pane taski pealkirja element taski elemendi sisse
                 taskList.appendChild(taskListItem) //pane taskide konteiner elemendi sisse taski element
             }
+            const btn = document.getElementById('newTaskInput').value = '';
         }
 
+
+        
 // Kasutaja saab märkida ülesande tehtuks.
 
 
