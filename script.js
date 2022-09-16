@@ -4,12 +4,6 @@ const tasks = [
     {title: 'Exercise 2', isDone: 'not done'},
 ];
 
-
-<<<<<<< HEAD
-        tasks.forEach(task => {
-            showTask(task)
-        });
-=======
 function showTask(task) {
     // võta HTMList ülesannete konteinerelement
     const taskListEl = document.querySelector('.taskList');
@@ -82,7 +76,6 @@ function showNumberofAllTasks() {
     // sisesta allTasksValue elemendi sisse number
     allTasksCount.textContent = tasks.length;
 }
->>>>>>> show-task-count
 
 
 
