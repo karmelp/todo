@@ -38,9 +38,14 @@ function showTask(task) {
     taskListEl.appendChild(taskListItemEl)
 }
 
-const showAllTasks = tasks.forEach(task => {
+const showAllTasks = () => {
+    const taskListEl = document.querySelector(".taskList");
+    taskListEl.innerHTML = "";
+
+    tasks.forEach(task => {
     showTask(task)
-});
+    });
+}
 
 showAllTasks()
 
@@ -52,36 +57,15 @@ document.querySelector('.addNewTaskButton').onclick = function() {
     if(document.querySelector('.newTaskField input').value.length == 0){
         alert("Write a task first!")
     } else {
-        // vastasel juhul võta HTMList ülesannete konteinerelement
-        const taskListEl = document.querySelector('.taskList')
-        // loo list element ülesande jaoks
-        const taskListItemEl = document.createElement('li')
-        // lisa ülesande list elemendile klass
-        taskListItemEl.setAttribute('class', 'taskListItem')
-        // loo div element ülesannet koondava konteineri jaoks
-        const taskListItemContainerEl = document.createElement('div')
-        // lisa ülesannet koondava konteineri div elemendile klass
-        taskListItemContainerEl.setAttribute('class', 'taskPreview')
-        // loo div element ülesande pealkirja jaoks
-        const taskTitleEl = document.createElement('div')
-        // lisa ülesande pealkirja div elemendile klass
-        taskTitleEl.setAttribute('class', 'taskTitle')
         // võta newTaskField input väärtus
         const taskTitle = document.getElementById('newTaskInput').value
         // lisa newTaskField input väärtus arraysse objektina
         tasks.push({title: taskTitle, isDone: 'done'})
-        showNumberofAllTasks();
-        // pane ülesande pealkiri pealkirja elemendi sisse
-        taskTitleEl.textContent = taskTitle
-        //pane taski pealkirja element taski elemendi sisse
-        taskListItemContainerEl.appendChild(taskTitleEl)
-        // pane ülesannet koondav element ülesande list elemendi sisse
-        taskListItemEl.appendChild(taskListItemContainerEl)
-        //pane taskide konteiner elemendi sisse taski element
-        taskListEl.appendChild(taskListItemEl)
+        showNumberofAllTasks()
+        showAllTasks()
     }
     // tühjenda input newTaskInput field peale uue ülesande lisamist 
-    const btn = document.getElementById('newTaskInput').value = ''
+    document.getElementById('newTaskInput').value = ''
 }
 
 
@@ -90,9 +74,6 @@ document.querySelector('.addNewTaskButton').onclick = function() {
 function showNumberofAllTasks() {
     // võta HTMList allTasksContainer klass
     const allTasksCount = document.querySelector('.allTasksCount');
-    // loo p element - klassidega labelValue & allTasksValue
-    const p = document.createElement('p');
-    p.setAttribute('class', 'allTasksCountNumber');
     // sisesta allTasksValue elemendi sisse number
     allTasksCount.textContent = tasks.length;
 }
