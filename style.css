@@ -132,7 +132,7 @@ h1 {
     font-size: 15px;
 }
 
-.button_Icon {
+.button_icon {
     margin-right: 10px;
     display: flex;
     align-items: center;
@@ -145,7 +145,7 @@ h1 {
     justify-content: center;
 }
 
-.svgInlineFa {
+.doneIcon {
     height: 15px;
 }
 

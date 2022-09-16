@@ -75,7 +75,7 @@
 
         
 // Kasutaja näeb, mitu ülesannet on tehtud
-        function doneTasks() {
+        /*function showDoneTasks() {
             // võta HTMList doneTasksContainer klass
         const doneTasksLabelValue = document.querySelector('.doneTasksLabelValue');
         
@@ -92,7 +92,7 @@
         // sisesta allTasksValue elemendi sisse number
         p.textContent = doneTasksCounter;
         }
-        doneTasks()
+        showDoneTasks()*/
 
 
         
