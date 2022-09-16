@@ -5,7 +5,6 @@ const tasks = [
 ];
 
 
-
 function showTask(task) {
     // võta HTMList ülesannete konteinerelement
     const taskListEl = document.querySelector('.taskList');
@@ -39,10 +38,11 @@ function showTask(task) {
     taskListEl.appendChild(taskListItemEl)
 }
 
-tasks.forEach(task => {
+const showAllTasks = tasks.forEach(task => {
     showTask(task)
 });
 
+showAllTasks()
 
 // Kasutaja saab lisada uue ülesande
 
