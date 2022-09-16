@@ -4,6 +4,8 @@ const tasks = [
     {title: 'Exercise 2', isDone: 'not done'},
 ];
 
+
+
 function showTask(task) {
     // võta HTMList ülesannete konteinerelement
     const taskListEl = document.querySelector('.taskList');
@@ -12,9 +14,9 @@ function showTask(task) {
     // lisa ülesande list elemendile klass
     taskListItemEl.setAttribute('class', 'taskListItem')
     // loo div element ülesannet koondava konteineri jaoks
-    const taskPreviewEl = document.createElement('div')
+    const taskListItemContainerEl = document.createElement('div')
     // lisa ülesannet koondava konteineri div elemendile klass
-    taskPreviewEl.setAttribute('class', 'taskPreview')
+    taskListItemContainerEl.setAttribute('class', 'taskPreview')
     //loo div element ülesande staatuse jaoks
     const taskStatusEl = document.createElement('div')
     // lisa ülesande staatuse div elemendile klass
@@ -28,11 +30,11 @@ function showTask(task) {
     // pane ülesande staatuse elemendi sisse tekst kas "tehtud" või "tegemata" olenevalt staatusest
     taskStatusEl.textContent = task.isDone
     // pane taski pealkirja element taski elemendi sisse
-    taskPreviewEl.appendChild(taskTitleEl)
+    taskListItemContainerEl.appendChild(taskTitleEl)
     // pane ülesande staatuse element ülesannet koondava elemendi sisse
-    taskPreviewEl.appendChild(taskStatusEl)
+    taskListItemContainerEl.appendChild(taskStatusEl)
     // pane ülesannet koondav element ülesande list elemendi sisse
-    taskListItemEl.appendChild(taskPreviewEl)
+    taskListItemEl.appendChild(taskListItemContainerEl)
     //pane ülenda list element ülesannete konteinerelemendi sisse
     taskListEl.appendChild(taskListItemEl)
 }
@@ -57,9 +59,9 @@ document.querySelector('.addNewTaskButton').onclick = function() {
         // lisa ülesande list elemendile klass
         taskListItemEl.setAttribute('class', 'taskListItem')
         // loo div element ülesannet koondava konteineri jaoks
-        const taskPreviewEl = document.createElement('div')
+        const taskListItemContainerEl = document.createElement('div')
         // lisa ülesannet koondava konteineri div elemendile klass
-        taskPreviewEl.setAttribute('class', 'taskPreview')
+        taskListItemContainerEl.setAttribute('class', 'taskPreview')
         // loo div element ülesande pealkirja jaoks
         const taskTitleEl = document.createElement('div')
         // lisa ülesande pealkirja div elemendile klass
@@ -72,9 +74,9 @@ document.querySelector('.addNewTaskButton').onclick = function() {
         // pane ülesande pealkiri pealkirja elemendi sisse
         taskTitleEl.textContent = taskTitle
         //pane taski pealkirja element taski elemendi sisse
-        taskPreviewEl.appendChild(taskTitleEl)
+        taskListItemContainerEl.appendChild(taskTitleEl)
         // pane ülesannet koondav element ülesande list elemendi sisse
-        taskListItemEl.appendChild(taskPreviewEl)
+        taskListItemEl.appendChild(taskListItemContainerEl)
         //pane taskide konteiner elemendi sisse taski element
         taskListEl.appendChild(taskListItemEl)
     }
@@ -87,12 +89,12 @@ document.querySelector('.addNewTaskButton').onclick = function() {
         
 function showNumberofAllTasks() {
     // võta HTMList allTasksContainer klass
-    const allTasksLabelValue = document.querySelector('.allTasksLabelValue');
+    const allTasksCount = document.querySelector('.allTasksCount');
     // loo p element - klassidega labelValue & allTasksValue
     const p = document.createElement('p');
-    p.setAttribute('class', 'allTasksLabelValueNumber');
+    p.setAttribute('class', 'allTasksCountNumber');
     // sisesta allTasksValue elemendi sisse number
-    allTasksLabelValue.textContent = tasks.length;
+    allTasksCount.textContent = tasks.length;
 }
 
 
