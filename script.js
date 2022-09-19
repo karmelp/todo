@@ -68,7 +68,7 @@ document.querySelector('.addNewTaskButton').onclick = function() {
 }
 
 
-// Kasutaja näeb, mitu on taske kokku.
+// Kasutaja näeb, mitu on ülesandeid kokku.
         
 function showNumberofAllTasks() {
     // võta HTMList allTasksContainer klass
@@ -78,9 +78,9 @@ function showNumberofAllTasks() {
 }
 
 
-
-        
 // Kasutaja näeb, mitu ülesannet on tehtud
+
+
 
         
 // Kasutaja saab märkida ülesande tehtuks.
