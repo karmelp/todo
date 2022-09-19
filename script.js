@@ -1,7 +1,7 @@
 // Kasutaja saab lugeda kõiki ülesandeid - pealkirja ja staatust
 const tasks = [
-    {title: 'Exercise 1', isDone: 'true'},
-    {title: 'Exercise 2', isDone: 'false'},
+    {title: 'Exercise 1', isDone: true},
+    {title: 'Exercise 2', isDone: false},
 ];
 
 function showTask(task) {
@@ -26,7 +26,7 @@ function showTask(task) {
     // loo i element ülesande staatuse nupu ikooni jaoks
     const statusIconEl = document.createElement('i')
     // lisa i elemendile klass
-    statusIconEl.setAttribute('class', 'icon')
+    statusIconEl.setAttribute('class', 'icon statusIcon')
     // loo div element ülesande pealkirja jaoks
     const taskTitleEl = document.createElement('div')
     // lisa ülesande pealkirja div elemendile klass
@@ -36,11 +36,15 @@ function showTask(task) {
     //  // pane ülesande staatuse elemendi sisse tekst kas "tehtud" või "tegemata" olenevalt staatusest
     taskStatusEl.textContent = task.isDone
     // muuda staatuse nupu värvi selle klikkides ja titleile kriips peale
-    statusIconEl.addEventListener('click', function onClick() {
+    /*
+    taskStatusEl.addEventListener('click', function toggle() {
+        // task.isDone = !false <-ei tööta
         statusIconEl.style.backgroundColor = '#42b883';
         taskTitleEl.style.textDecoration = 'line-through'
         taskTitleEl.style.textDecorationThickness = '2px'
-      });
+    });
+    */
+
     // pane ülesande staatuse nupu ikooni element ülesande staatuse nupu sisse
     statusButton_iconEl.appendChild(statusIconEl)
     // pane span element ülesande staatuse nupu sisse
@@ -80,6 +84,7 @@ document.querySelector('.addNewTaskButton').onclick = function() {
         showNumberofAllTasks()
         showAllTasks()
     }
+
     // tühjenda input newTaskInput field peale uue ülesande lisamist 
     document.getElementById('newTaskInput').value = ''
 }
@@ -91,6 +96,7 @@ function showNumberofAllTasks() {
     // võta HTMList allTasksContainer klass
     const allTasksCount = document.querySelector('.allTasksCount');
     // sisesta allTasksValue elemendi sisse number
+
     allTasksCount.textContent = tasks.length;
 }
 
@@ -111,16 +117,17 @@ function showNumberofDoneTasks() {
     doneTasksCount.textContent = doneTasksCounter;
 }
 
-showNumberofDoneTasks()
         
 // Kasutaja saab märkida ülesande tehtuks.
-
-document.querySelector('.taskStatusButton').onclick = function() {
-    
+// vajutades taskStatusEl (.taskStatusButton)
+document.querySelector('.taskStatusButton').onclick = function () {
+    task.isDone = 'true'
+    statusIconEl.style.backgroundColor = '#42b883';
+        taskTitleEl.style.textDecoration = 'line-through'
+        taskTitleEl.style.textDecorationThickness = '2px'
+      showAllTasks()
+      showNumberofDoneTasks()
 }
-
-    // vajutades taskStatusEl (.taskStatusButton)
-         // nupu (.taskStatusButton .icon) värv muutub roheliseks (#42b883)
          // taskTitleEl (.taskTitle) tõmmatakse maha
          // task.isDone muutub done ja lisandub 
 
