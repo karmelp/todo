@@ -46,7 +46,7 @@ const showAllTasks = () => {
     });
 }
 
-showAllTasks()
+showAllTasks() // KUSTUTA ÄRA, KUI MOCK DATAT ENAM VAJA POLE
 
 // Kasutaja saab lisada uue ülesande
 
@@ -80,8 +80,21 @@ function showNumberofAllTasks() {
 
 // Kasutaja näeb, mitu ülesannet on tehtud
 
+function showNumberofDoneTasks() {
+    // võta HTMList doneTasksCount klass
+    const doneTasksCount = document.querySelector('.doneTasksCount');
 
+    //for loop, et loendada kokku tehtud ülesanded
+    let doneTasksCounter = 0;
+    for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].isDone === 'done') doneTasksCounter++;
+    }
 
+    // sisesta doneTasksValue elemendi sisse number
+    doneTasksCount.textContent = doneTasksCounter;
+}
+
+showNumberofDoneTasks()
         
 // Kasutaja saab märkida ülesande tehtuks.
 
