@@ -37,8 +37,6 @@ function showTask(task) {
     taskTitleEl.setAttribute('class', 'taskTitle')
     // pane ülesande pealkirja elemendi sisse ülesande pealkiri
     taskTitleEl.textContent = task.title
-    // pane ülesande staatuse elemendi sisse tekst kas "tehtud" või "tegemata" olenevalt staatusest
-    taskStatusEl.textContent = task.isDone
     // kui task on tehtud, muuda staatuse nupu värvi sellel klikkides ja titleile tee kriips peale
     if (task.isDone) {
         statusIconEl.style.backgroundColor = "#42b883";
