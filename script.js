@@ -59,6 +59,7 @@ function showTask(task) {
     taskListEl.appendChild(taskListItemEl)
 }
 
+// Kasutaja saab märkida ülesande tehtuks.
 const toggleTaskStatus = (el) => {
     // käi läbi kõik taskid
     tasks.map((task) => {
@@ -68,6 +69,7 @@ const toggleTaskStatus = (el) => {
       }
     });
   
+    showNumberofDoneTasks()
     // joonista uuesti kõik taskid
     showAllTasks();
 };
@@ -103,7 +105,6 @@ document.querySelector('.addNewTaskButton').onclick = function() {
     document.getElementById('newTaskInput').value = ''
 }
 
-
 // Kasutaja näeb, mitu on ülesandeid kokku.
 function showNumberofAllTasks() {
     // võta HTMList allTasksContainer klass
@@ -116,7 +117,6 @@ function showNumberofAllTasks() {
 showNumberofAllTasks();
 
 // Kasutaja näeb, mitu ülesannet on tehtud
-
 function showNumberofDoneTasks() {
     // võta HTMList doneTasksCount klass
     const doneTasksCount = document.querySelector('.doneTasksCount');
@@ -129,13 +129,8 @@ function showNumberofDoneTasks() {
     doneTasksCount.textContent = doneTasksCounter;
 }
 
-        
-// Kasutaja saab märkida ülesande tehtuks.
-// vajutades taskStatusEl (.taskStatusButton)
-
-         // task.isDone muutub done ja lisandub 
-
-
+// näita kohe, kui kasutaja äppi saabub, mitu taski tehtud on
+showNumberofDoneTasks()
 
 // Kasutaja saab ülesande muuta ülesannet.
 
