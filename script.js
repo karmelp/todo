@@ -130,7 +130,7 @@ function showNumberofDoneTasks() {
 // näita kohe, kui kasutaja äppi saabub, mitu taski tehtud on
 showNumberofDoneTasks()
 
-// Kasutaja saab ülesande muuta ülesannet.
+// Kasutaja saab muuta ülesannet.
 
 
 // Kasutaja saab ülesande kustutada.
