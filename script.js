@@ -163,18 +163,19 @@ showNumberofDoneTasks()
 // Kasutaja saab ülesande kustutada.
 
 const taskDelete = (a) => {
-    // käi läbi kõik taskid
-    tasks.map((task) => {
-        // kui taski title on see, millel klikiti,
+    tasks.filter((task) => {
+        // kui taski title on see, millel klikiti, kustuta task element
         if (task.title === a.getAttribute("task-title")) {
-            // siis kustuta see task
-            tasks.remove()
+            
         }
-    })
+      });
+
+    showAllTasks()
     showNumberofDoneTasks()
-    // joonista uuesti kõik taskid
-    showAllTasks();
+    showAllTasks()
 }
+
+
 // klikkides taskDelete buttonit tee järgmist
 
 
