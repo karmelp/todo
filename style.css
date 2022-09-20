@@ -226,3 +226,32 @@ h1 {
     background-color: #fff;
     padding: 0;
 }
+
+.taskTools {
+   display: flex; 
+   padding: 0;
+   margin-left: auto;
+   list-style: none;
+   opacity: 0;
+}
+
+.taskListItemContainer:hover .taskTools {
+    display: flex; 
+    padding: 0;
+    margin-left: auto;
+    list-style: none;
+    opacity: 1;
+}
+
+.taskDelete .icon {
+    color: #f65050;
+    font-size: 20px;
+}
+
+.taskDelete .icon:hover {
+    color: #b64a45;
+}
+
+.taskDelete .button_icon {
+    margin: 0;
+}

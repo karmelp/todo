@@ -21,7 +21,7 @@ function showTask(task) {
     taskStatusEl.setAttribute('class', 'button taskStatusButton buttonIcon')
     // lisa ülesande staatuse div elemendile pealkirja attribuut
     taskStatusEl.setAttribute("task-title", task.title);
-    // lisa igale taskStatusElemendile onclick funktsioon
+    // lisa igale taskStatusEl eemendile onclick funktsioon
     taskStatusEl.onclick = () => toggleTaskStatus(taskStatusEl);
     // loo span element ülesande staatuse nupu jaoks
     const statusButton_iconEl = document.createElement('span')
@@ -30,7 +30,7 @@ function showTask(task) {
     // loo i element ülesande staatuse nupu ikooni jaoks
     const statusIconEl = document.createElement('i')
     // lisa i elemendile klass
-    statusIconEl.setAttribute('class', 'icon statusIcon')
+    statusIconEl.setAttribute('class', 'icon')
     // loo div element ülesande pealkirja jaoks
     const taskTitleEl = document.createElement('div')
     // lisa ülesande pealkirja div elemendile klass
@@ -43,6 +43,26 @@ function showTask(task) {
         taskTitleEl.style.textDecoration = "line-through";
         taskTitleEl.style.textDecorationThickness = "2px";
     }
+    // loo unordered list element 
+    const taskToolsEl = document.createElement('ul')
+    // lisa unordered list elemendile klass
+    taskToolsEl.setAttribute('class', 'taskTools')
+    // loo list item element
+    const taskToolsDeleteEl = document.createElement('li')
+    // loo button element ülesande kustutamise jaoks
+    const taskDeleteEl = document.createElement('button')
+    // lisa ülesande kustutamise nupu elemendile klass
+    taskDeleteEl.setAttribute('class', 'button taskDelete buttonIcon')
+    // lisa igale taskDeleteEl elemendile onclick funktsioon
+    taskDeleteEl.onclick = () => taskDelete(taskDeleteEl);
+    // loo span element ülesande kustutamise nupu jaoks
+    const deleteTaskButton_iconEl = document.createElement('span')
+    // lisa span elemendile klass
+    deleteTaskButton_iconEl.setAttribute('class', 'button_icon')
+    // loo i element ülesande kustutamise nupu ikooni jaoks
+    const deleteTaskIconEl = document.createElement('i')
+    // lisa i elemendile klass
+    deleteTaskIconEl.setAttribute('class', 'icon fa-solid fa-trash')
     // pane ülesande staatuse nupu ikooni element ülesande staatuse nupu sisse
     statusButton_iconEl.appendChild(statusIconEl)
     // pane span element ülesande staatuse nupu sisse
@@ -51,9 +71,19 @@ function showTask(task) {
     taskListItemContainerEl.appendChild(taskStatusEl)
     // pane ülesande pealkirja element ülesannet koondava konteineri div elemendi sisse
     taskListItemContainerEl.appendChild(taskTitleEl)
+    // pane deleteTaskIconEl i element deleteTaskButton_iconEl span elemendi sisse
+    deleteTaskButton_iconEl.appendChild(deleteTaskIconEl)
+    // pane deleteTaskButton_iconEl span element taskDeleteEl button elemendi sisse
+    taskDeleteEl.appendChild(deleteTaskButton_iconEl)
+    // pane taskDeleteEl button element taskToolsDeleteEl list item elemendi sisse
+    taskToolsDeleteEl.appendChild(taskDeleteEl)
+    // pane taskToolsDeleteEl list item element taskTools unordered list elemendi sisse
+    taskToolsEl.appendChild(taskToolsDeleteEl)
+    // pane taskTools unordered list element ülesannet koondava konteineri div elemendi sisse
+    taskListItemContainerEl.appendChild(taskToolsEl)
     // pane ülesannet koondav element ülesande list elemendi sisse
     taskListItemEl.appendChild(taskListItemContainerEl)
-    //pane ülenda list element ülesannete konteinerelemendi sisse
+    //pane ülesanda list element ülesannete konteinerelemendi sisse
     taskListEl.appendChild(taskListItemEl)
 }
 
@@ -130,10 +160,24 @@ function showNumberofDoneTasks() {
 // näita kohe, kui kasutaja äppi saabub, mitu taski tehtud on
 showNumberofDoneTasks()
 
-// Kasutaja saab muuta ülesannet.
-
-
 // Kasutaja saab ülesande kustutada.
 
+const taskDelete = (a) => {
+    // käi läbi kõik taskid
+    tasks.map((task) => {
+        // kui taski title on see, millel klikiti,
+        if (task.title === a.getAttribute("task-title")) {
+            // siis kustuta see task
+            tasks.remove()
+        }
+    })
+    showNumberofDoneTasks()
+    // joonista uuesti kõik taskid
+    showAllTasks();
+}
+// klikkides taskDelete buttonit tee järgmist
+
+
+// Kasutaja saab muuta ülesannet.
 
 // Kasutaja saab kõik ülesanded korraga ära kustutada.
