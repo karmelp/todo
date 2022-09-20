@@ -68,7 +68,7 @@ const toggleTaskStatus = (el) => {
         task.isDone = !task.isDone;
       }
     });
-  
+    
     showNumberofDoneTasks()
     // joonista uuesti kõik taskid
     showAllTasks();
