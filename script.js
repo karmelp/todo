@@ -164,7 +164,7 @@ showNumberofDoneTasks()
 
 // Kasutaja saab ülesande kustutada.
 
-function taskDelete(tasks, taskTitle) {
+function taskDelete(taskTitle) {
     const deleteIndex = tasks.indexOf(taskTitle)
     tasks.splice(deleteIndex, 1);
     showAllTasks()
