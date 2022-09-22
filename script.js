@@ -56,7 +56,7 @@ function showTask(task) {
     // lisa ülesande kustutamise nupu elemendile klass
     taskDeleteEl.setAttribute('class', 'button taskDelete buttonIcon')
     // lisa igale taskDeleteEl nupu elemendile onclick funktsioon
-    taskDeleteEl.onclick = () => taskDelete(task.title);
+    taskDeleteEl.onclick = () => taskDelete(task);
     // loo span element ülesande kustutamise nupu jaoks
     const deleteTaskButton_iconEl = document.createElement('span')
     // lisa span elemendile klass
@@ -164,12 +164,13 @@ showNumberofDoneTasks()
 
 // Kasutaja saab ülesande kustutada.
 
-function taskDelete(taskTitle) {
-    const deleteIndex = tasks.indexOf(taskTitle)
+function taskDelete(task) {
+    const deleteIndex = tasks.indexOf(task)
     tasks.splice(deleteIndex, 1);
     showAllTasks()
     showNumberofDoneTasks()
     showAllTasks()
+
 }
 
 // klikkides taskDelete buttonit tee järgmist
