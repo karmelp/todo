@@ -30,7 +30,7 @@ function showTask(task) {
     // loo i element ülesande staatuse nupu ikooni jaoks
     const statusIconEl = document.createElement('i')
     // lisa i elemendile klass
-    statusIconEl.setAttribute('class', 'icon')
+    statusIconEl.setAttribute('class', 'icon fa-solid fa-circle-check')
     // loo div element ülesande pealkirja jaoks
     const taskTitleEl = document.createElement('div')
     // lisa ülesande pealkirja div elemendile klass
@@ -41,7 +41,7 @@ function showTask(task) {
     taskTitleEl.textContent = task.title
     // kui task on tehtud, muuda staatuse nupu värvi sellel klikkides ja titleile tee kriips peale
     if (task.isDone) {
-        statusIconEl.style.backgroundColor = "#42b883";
+        statusIconEl.style.color = "#42b883";
         taskTitleEl.style.textDecoration = "line-through";
         taskTitleEl.style.textDecorationThickness = "2px";
     }

@@ -176,18 +176,12 @@ h1 {
 .taskStatusButton {
     margin-right: 15px;
     opacity: 1;
+    color: #c3bbb6;
+    font-size: 24px;
 }
 
-.taskStatusButton .icon {
-    height: 24px;
-    width: 24px;
-    -webkit-mask-image: url(assets/circle-check-solid.svg);
-    background-color: #c3bbb6;
-}
-
-.taskStatusButton .icon:hover {
-    -webkit-mask-image: url(assets/circle-check-solid.svg);
-    background-color: #9d9792;
+.taskStatusButton:hover {
+    color: #9d9792;
 }
 
 .buttonIcon {
