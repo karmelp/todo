@@ -7,10 +7,6 @@ const tasks = [
 function showTask(task) {
     // võta HTMList ülesannete konteinerelement
     const taskListEl = document.querySelector('.taskList');
-    // loo list element ülesande jaoks
-    const taskListItemEl = document.createElement('li')
-    // lisa ülesande list elemendile klass
-    taskListItemEl.setAttribute('class', 'taskListItem')
     // loo div element ülesannet koondava konteineri jaoks
     const taskListItemContainerEl = document.createElement('div')
     // lisa ülesannet koondava konteineri div elemendile klass
@@ -23,14 +19,10 @@ function showTask(task) {
     taskStatusEl.setAttribute("task-title", task.title);
     // lisa igale taskStatusEl elemendile onclick funktsioon
     taskStatusEl.onclick = () => toggleTaskStatus(taskStatusEl);
-    // loo span element ülesande staatuse nupu jaoks
-    const statusButton_iconEl = document.createElement('span')
-    // lisa span elemendile klass
-    statusButton_iconEl.setAttribute('class', 'button_icon')
     // loo i element ülesande staatuse nupu ikooni jaoks
     const statusIconEl = document.createElement('i')
     // lisa i elemendile klass
-    statusIconEl.setAttribute('class', 'icon fa-solid fa-circle-check')
+    statusIconEl.setAttribute('class', 'icon fa-solid fa-circle-check button_icon')
     // loo div element ülesande pealkirja jaoks
     const taskTitleEl = document.createElement('div')
     // lisa ülesande pealkirja div elemendile klass
@@ -49,8 +41,6 @@ function showTask(task) {
     const taskToolsEl = document.createElement('ul')
     // lisa unordered list elemendile klass
     taskToolsEl.setAttribute('class', 'taskTools')
-    // loo list item element
-    const taskToolsDeleteEl = document.createElement('li')
     // loo button element ülesande kustutamise jaoks
     const taskDeleteEl = document.createElement('button')
     // lisa ülesande kustutamise nupu elemendile klass
@@ -65,10 +55,8 @@ function showTask(task) {
     const deleteTaskIconEl = document.createElement('i')
     // lisa i elemendile klass
     deleteTaskIconEl.setAttribute('class', 'icon fa-solid fa-trash')
-    // pane ülesande staatuse nupu ikooni element ülesande staatuse nupu sisse
-    statusButton_iconEl.appendChild(statusIconEl)
     // pane span element ülesande staatuse nupu sisse
-    taskStatusEl.appendChild(statusButton_iconEl)
+    taskStatusEl.appendChild(statusIconEl)
     // pane ülesande staatuse nupp ülesannet koondava konteineri div elemendi sisse
     taskListItemContainerEl.appendChild(taskStatusEl)
     // pane ülesande pealkirja element ülesannet koondava konteineri div elemendi sisse
@@ -77,16 +65,12 @@ function showTask(task) {
     deleteTaskButton_iconEl.appendChild(deleteTaskIconEl)
     // pane deleteTaskButton_iconEl span element taskDeleteEl button elemendi sisse
     taskDeleteEl.appendChild(deleteTaskButton_iconEl)
-    // pane taskDeleteEl button element taskToolsDeleteEl list item elemendi sisse
-    taskToolsDeleteEl.appendChild(taskDeleteEl)
-    // pane taskToolsDeleteEl list item element taskTools unordered list elemendi sisse
-    taskToolsEl.appendChild(taskToolsDeleteEl)
+    // pane taskDeleteEl list item element taskTools unordered list elemendi sisse
+    taskToolsEl.appendChild(taskDeleteEl)
     // pane taskTools unordered list element ülesannet koondava konteineri div elemendi sisse
     taskListItemContainerEl.appendChild(taskToolsEl)
-    // pane ülesannet koondav element ülesande list elemendi sisse
-    taskListItemEl.appendChild(taskListItemContainerEl)
     //pane ülesanda list element ülesannete konteinerelemendi sisse
-    taskListEl.appendChild(taskListItemEl)
+    taskListEl.appendChild(taskListItemContainerEl)
 }
 
 // Kasutaja saab märkida ülesande tehtuks.
