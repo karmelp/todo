@@ -101,6 +101,7 @@ function toggleTaskStatus(el) {
     showAllTasks();
 }
 
+// Kasutaja näeb kõiki ülesandeid
 function showAllTasks() {
     //tühjenda HTMLis taskide konteiner
     const taskListEl = document.querySelector(".taskList");
@@ -174,12 +175,7 @@ document.querySelector(".addNewTaskButton").onclick = onAddNewTaskBtnClick;
 showNumberofAllTasks();
 // näita kohe, kui kasutaja äppi saabub, mitu ülesannet tehtud on
 showNumberOfDoneTasks();
-// 
 showAllTasks();
-
-
-
-
 
 // Kasutaja saab muuta ülesannet.
 

@@ -88,7 +88,6 @@ h1 {
     font-weight: 500;
 }
 
-
 .labelValueNumber .allTasksCount {
     width: 20px;
     height: 20px;
@@ -112,6 +111,7 @@ h1 {
     line-height: 110%;
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0);
+
 }
 
 .buttonError {
@@ -124,7 +124,7 @@ h1 {
     font-size: 15px;
 }
 
-.button_icon {
+.buttonIcon {
     margin-right: 10px;
     display: flex;
     align-items: center;
@@ -174,11 +174,6 @@ h1 {
     color: #9d9792;
 }
 
-.buttonIcon {
-    padding: 0;
-    margin: 0;
-}
-
 .newTask {
     padding: 15px 20px;
     background-color: #f2f2f2;
@@ -209,6 +204,7 @@ h1 {
     font-size: 36px;
     background-color: #fff;
     padding: 0;
+    border: 0;
 }
 
 .taskTools {
