@@ -131,12 +131,6 @@ h1 {
     justify-content: center;
 }
 
-.buttonIcon .icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .taskListContainer {
     height: 168px;
     margin: 20px;
@@ -233,15 +227,11 @@ h1 {
     opacity: 1;
 }
 
-.taskDelete .icon {
+.deleteTaskBtn {
     color: #f65050;
     font-size: 20px;
 }
 
-.taskDelete .icon:hover {
+.deleteTaskBtn:hover {
     color: #b64a45;
-}
-
-.taskDelete .button_icon {
-    margin: 0;
 }
