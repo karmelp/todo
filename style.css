@@ -235,3 +235,19 @@ h1 {
 .deleteTaskBtn:hover {
     color: #b64a45;
 }
+
+.taskListMessage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #dcdfe3;
+    font-size: 20px;
+}
+
+.taskListMessageText {
+    margin: 0 0 20px;
+}
+
+.taskListMessageIcon {
+    font-size: 50px;
+}

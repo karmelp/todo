@@ -75,6 +75,10 @@ function showTask(task) {
         // kasuta markTaskAsDone funktsiooni
         markTaskAsDone(taskStatusEl, taskTitleEl);
     }
+
+    if (tasks.length == 0) {
+        getTaskListMessage()
+    }
   
     // pane deleteTaskEl element taskToolsEl elemendi sisse
     taskToolsEl.appendChild(deleteTaskEl);
@@ -172,12 +176,33 @@ function deleteTask(task) {
 function deleteAllTasks() {
     const deleteIndex = tasks;
     tasks.splice(deleteIndex, tasks.length);
+
+    
     // joonista uuesti kõik ülesanded
     showAllTasks();
     // joonista uuesti mitu ülesannet tehtud on
     showNumberOfDoneTasks();
     // joonista uuesti mitu ülesannet on kokku
     showNumberofAllTasks();
+}
+
+function getTaskListMessage() {
+    // võta HTMList ülesannete konteinerelement
+    const taskListContainerEl = document.querySelector(".taskListContainer"); //kustuta
+    // loo div element sõnumi jaoks
+    const taskListMessageContainerEl = document.createElement("div");
+    // lisa taskListMessageContainerEl div elemendile klass
+    taskListMessageContainerEl.className = "taskListMessage";
+    // loo p element sõnumi pealkirja jaoks
+    const taskListMessageTextEl = document.createElement("p");
+    taskListMessageTextEl.className = "taskListMessageText";
+    taskListMessageTextEl.innerHTML = "Your task list is empty";
+    const taskListMessageIconEl = document.createElement("i");
+    taskListMessageIconEl.className = "fa-solid fa-clipboard-check taskListMessageIcon";
+
+    taskListMessageContainerEl.append(taskListMessageTextEl, taskListMessageIconEl)
+    // pane deleteTaskEl element taskToolsEl elemendi sisse
+    taskListContainerEl.appendChild(taskListMessageContainerEl);
 }
 
 // vajutades .deleteAllTasksBtn'it aktiveerub deleteAllTasks funktsioon
