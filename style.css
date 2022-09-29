@@ -119,6 +119,10 @@ h1 {
     color: #fff;
 }
 
+.buttonError:hover {
+    background-color: #C14E4A;;
+}
+
 .buttonSmall {
     padding: 5px 8px;
     font-size: 15px;

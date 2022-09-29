@@ -168,6 +168,21 @@ function deleteTask(task) {
     showNumberofAllTasks();
 }
 
+// Kasutaja saab kõik ülesanded korraga ära kustutada.
+function deleteAllTasks() {
+    const deleteIndex = tasks;
+    tasks.splice(deleteIndex, tasks.length);
+    // joonista uuesti kõik ülesanded
+    showAllTasks();
+    // joonista uuesti mitu ülesannet tehtud on
+    showNumberOfDoneTasks();
+    // joonista uuesti mitu ülesannet on kokku
+    showNumberofAllTasks();
+}
+
+// vajutades .deleteAllTasksBtn'it aktiveerub deleteAllTasks funktsioon
+document.querySelector(".deleteAllTasks").onclick = deleteAllTasks;
+
 // vajutades .addNewTaskButton'it aktiveerub onAddNewTaskBtnClick funktsioon
 document.querySelector(".addNewTaskButton").onclick = onAddNewTaskBtnClick;
 
@@ -177,6 +192,6 @@ showNumberofAllTasks();
 showNumberOfDoneTasks();
 showAllTasks();
 
-// Kasutaja saab muuta ülesannet.
+// Kasutaja saab korraga kustutada köik tehtud ülesanded.
 
-// Kasutaja saab kõik ülesanded korraga ära kustutada.
+// Kasutaja saab muuta ülesannet.
