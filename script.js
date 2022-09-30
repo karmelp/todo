@@ -21,15 +21,33 @@ function getStatusBtnElement(task) {
 
 // Loo funktsioon, mis tagastab delete button elemendi 
 function getDeleteBtnElement(task) {
+    // loo list element ülesande kustutamise nupu jaoks
+    const deleteTaskEl = document.createElement("li");
     // loo i element ülesande kustutamise nupu ikooni jaoks
     const deleteTaskIconEl = document.createElement("i");
-    // lisa deleteTaskIconEl i elemendile klass
     deleteTaskIconEl.className = "fa-solid fa-trash button deleteTaskBtn";
     // lisa deleteTaskIconEl i elemendile onclick funktsioon
     deleteTaskIconEl.onclick = () => deleteTask(task);
-  
-    // tagasta deleteTaskIconEl i element
-    return deleteTaskIconEl;
+    
+    deleteTaskEl.appendChild(deleteTaskIconEl)
+    // tagasta deleteTaskEl i element
+    return deleteTaskEl;
+}
+
+// Loo funktsioon, mis tagastab edit button elemendi       !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+function getEditBtnElement() {
+    // loo list element ülesande kustutamise nupu jaoks
+    const editTaskEl = document.createElement("li");
+    // loo i element ülesande muutmise nupu ikooni jaoks
+    const editTaskIconEl = document.createElement("i");
+    // lisa editTaskIconEl i elemendile klass
+    editTaskIconEl.className = "fa-solid fa-pen-to-square button editTaskBtn";
+    // lisa editTaskIconEl i elemendile onclick funktsioon
+    editTaskIconEl.onclick = () => getModal();
+    
+    editTaskEl.appendChild(editTaskIconEl)
+    // tagasta deleteTaskEl i element
+    return editTaskEl;
 }
 
 // Loo funktsioon, mis tagastab task title elemendi
@@ -40,7 +58,7 @@ function getTaskTitleElement(taskTitle) {
     taskTitleEl.setAttribute("task-title", taskTitle);
     // pane taskTitleEl div elemendi sisse ülesande pealkiri
     taskTitleEl.textContent = taskTitle;
-  
+    
     // tagasta taskTitleEl div element
     return taskTitleEl;
 }
@@ -63,6 +81,8 @@ function showTask(task) {
     const taskStatusEl = getStatusBtnElement(task);
     // kasuta getTaskTitleElement funktsiooni showTask funkstiooni sees
     const taskTitleEl = getTaskTitleElement(task.title);
+    // kasuta editTaskEl funktsiooni showTask funkstiooni sees
+    const editTaskEl = getEditBtnElement(task);
     // kasuta getDeleteBtnElement funktsiooni showTask funkstiooni sees
     const deleteTaskEl = getDeleteBtnElement(task);
     // loo unordered list element ülesande tööriistade jaoks
@@ -77,7 +97,7 @@ function showTask(task) {
     }
   
     // pane deleteTaskEl element taskToolsEl elemendi sisse
-    taskToolsEl.appendChild(deleteTaskEl);
+    taskToolsEl.append(editTaskEl, deleteTaskEl);
     // kasuta el.append(), kui on elemendile vaja panna mitu last
     taskListItemContainerEl.append(taskStatusEl, taskTitleEl, taskToolsEl);
     // kasuta el.appendChild(), kui on elemendile vaja panna üks laps
@@ -188,6 +208,8 @@ function deleteAllTasks() {
     showNumberofAllTasks();
 }
 
+
+
 // Teadaanne, kui ülesandeid pole
 function getTaskListMessage() {
     // võta HTMList ülesannete konteinerelement
@@ -203,12 +225,56 @@ function getTaskListMessage() {
     taskListMessageIconEl.className = "fa-solid fa-clipboard-check taskListMessageIcon";
 
     taskListMessageContainerEl.append(taskListMessageTextEl, taskListMessageIconEl)
-    // pane deleteTaskEl element taskToolsEl elemendi sisse
+    // pane taskListMessageContainerEl element taskListEl elemendi sisse
     taskListEl.appendChild(taskListMessageContainerEl);
 }
 
 // Kasutaja saab muuta ülesannet.
+function getModal() {
+    const modalBgEl = document.createElement("div");
+    modalBgEl.className = "modalBg"
+    const modalContentEl = document.createElement("div");
+    modalContentEl.className = "modalContent"
+    const modalTitleEl = document.createElement("h3");
+    modalTitleEl.className = "editTaskTitle"
+    modalTitleEl.innerHTML = "Edit task";
 
+    const modalCloseBtnEl = document.createElement("i");
+    modalCloseBtnEl.className = "button modalCloseBtn buttonSmall"
+
+    modalContentEl.appendChild(modalCloseBtnEl)
+    modalBgEl.appendChild(modalContentEl)
+}
+
+function editTask() {
+    // loo editContent konteiner modalis
+    const editContentEl = document.createElement("div");
+    editContentEl.className = "editContent";
+    // loo editTaskItem konteiner modalis
+    const editTaskItemEl = document.createElement("div");
+    editTaskItemEl.className = "editTaskItem";
+    // loo edit task alapealkiri
+    const editTaskSubtitleEl = document.createElement("h4");
+    editTaskSubtitleEl.className = "editTaskSubtitle";
+    // loo input ülesande muutmiseks
+    const editTaskInputFieldEl = document.createElement("input");
+    editTaskInputFieldEl.className = "editTaskInputField";
+    // loo button ülesande muutmise salvestamiseks
+    const editTaskSaveBtnEl = document.createElement("button");
+    editTaskSaveBtnEl.className = "button editTaskSaveBtn";
+    // loo button ikoon element
+    const editTaskSaveBtnIconEl = document.createElement("i");
+    editTaskSaveBtnIconEl.className = "button buttonIcon";
+    // loo button tekst element
+    const editTaskSaveBtnTextEl = document.createElement("span");
+
+    // pane editTaskItemEl sisse alapealkiri ja input field
+    editTaskItemEl.append(editTaskSubtitleEl, editTaskInputFieldEl)
+    // pane editTaskSaveBtnEl sisse ikoon ja tekst
+    editTaskSaveBtnEl.append(editTaskSaveBtnIconEl, editTaskSaveBtnTextEl);
+    // pane editTaskSubtitleEl, editTaskFieldEl elemendid editContentEl elemendi sisse
+    editContentEl.append(editTaskItemEl, editTaskSaveBtnEl);
+}
 
 // vajutades .deleteAllTasksBtn'it aktiveerub deleteAllTasks funktsioon
 document.querySelector(".deleteAllTasks").onclick = deleteAllTasks;
