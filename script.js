@@ -188,6 +188,7 @@ function deleteAllTasks() {
     showNumberofAllTasks();
 }
 
+// Teadaanne, kui ülesandeid pole
 function getTaskListMessage() {
     // võta HTMList ülesannete konteinerelement
     const taskListEl = document.querySelector(".taskList"); 
@@ -206,6 +207,9 @@ function getTaskListMessage() {
     taskListEl.appendChild(taskListMessageContainerEl);
 }
 
+// Kasutaja saab muuta ülesannet.
+
+
 // vajutades .deleteAllTasksBtn'it aktiveerub deleteAllTasks funktsioon
 document.querySelector(".deleteAllTasks").onclick = deleteAllTasks;
 
@@ -219,5 +223,3 @@ showNumberOfDoneTasks();
 showAllTasks();
 
 // Kasutaja saab korraga kustutada köik tehtud ülesanded.
-
-// Kasutaja saab muuta ülesannet.
