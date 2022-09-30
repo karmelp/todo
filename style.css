@@ -258,8 +258,8 @@ h1 {
     font-size: 50px;
 }
 
-.modalBg {
-    display: none;
+.modal {
+    visibility: hidden;
     position: fixed;
     z-index: 999999;
     top: 0;
@@ -269,7 +269,7 @@ h1 {
     background-color: rgba(0,0,0,.7);
 }
 
-.modalContent {
+.modalContainer {
     width: 100%;
     max-width: 400px;
     margin: 15% auto;
