@@ -190,7 +190,7 @@ function deleteAllTasks() {
 
 function getTaskListMessage() {
     // võta HTMList ülesannete konteinerelement
-    const taskListEl = document.querySelector(".taskList"); //kustuta
+    const taskListEl = document.querySelector(".taskList"); 
     // loo div element sõnumi jaoks
     const taskListMessageContainerEl = document.createElement("div");
     // lisa taskListMessageContainerEl div elemendile klass
