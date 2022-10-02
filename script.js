@@ -43,11 +43,11 @@ function getEditBtnElement() {
     // lisa editTaskIconEl i elemendile klass
     editTaskIconEl.className = "fa-solid fa-pen-to-square button editTaskBtn";
     // lisa editTaskIconEl i elemendile onclick funktsioon
-    editTaskIconEl.onclick = () => getModal();
+    editTaskIconEl.onclick = () => {console.log('clicking on edit task icon element'); getModal();}
     
     editTaskEl.appendChild(editTaskIconEl)
     // tagasta editTaskEl i element
-    return editTaskEl;
+    return editTaskIconEl;
 }
 
 function getModal() {
@@ -57,7 +57,7 @@ function getModal() {
         modalEl.style.display = "flex";
     }
 
-    // editTaskBtnEl.addEventListener("click", showModalEl);
+    editTaskBtnEl.addEventListener("click", showModalEl);
 
     const closeModalBtnEl = document.querySelector(".modalCloseButton");
 
@@ -66,9 +66,6 @@ function getModal() {
     }
 
     closeModalBtnEl.addEventListener("click", closeModalEl);
-
-
-    // console.log("editTaskBtnEl", editTaskBtnEl);
     
     // editTaskBtnEl.onclick = function() {
     //     console.log("clicking on edit task button");
@@ -119,7 +116,7 @@ function showTask(task) {
     // kasuta getTaskTitleElement funktsiooni showTask funkstiooni sees
     const taskTitleEl = getTaskTitleElement(task.title);
     // kasuta editTaskEl funktsiooni showTask funkstiooni sees
-    const editTaskEl = getEditBtnElement(task);
+    const editTaskEl = getEditBtnElement();
     // kasuta getDeleteBtnElement funktsiooni showTask funkstiooni sees
     const deleteTaskEl = getDeleteBtnElement(task);
     // loo unordered list element ülesande tööriistade jaoks
