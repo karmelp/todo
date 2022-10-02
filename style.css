@@ -258,24 +258,73 @@ h1 {
     font-size: 50px;
 }
 
-.modal {
-    visibility: hidden;
+.modalOverlay {
+    display: none;
     position: fixed;
-    z-index: 999999;
+    z-index: 10;
     top: 0;
     left: 0;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,.7);
 }
 
-.modalContainer {
+.modal {
+    position: absolute;
     width: 100%;
-    max-width: 400px;
+    max-width: 350px;
     margin: 15% auto;
-    padding: 20px;
     padding: 30px;
     border-radius: 5px;
     background-color: #fff;
+    font-size: 16px;
+}
+
+.modalCloseButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+.editTaskTitle {
+    margin: 0 0 20px;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.editTaskContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.editTaskItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.editTaskSubtitle {
+    margin-bottom: 12px;
+    font-size: 18px;
+}
+
+#editTaskInputField {
+    padding: 12px;
+    border: 2px solid #3e82c3;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.editTaskSaveBtn {
+    align-self: flex-end;
+    max-width: 100px;
+    margin-top: 20px;
+    background-color: #3e82c3;
+    color: #fff;
+    padding: 12px 20px;
     font-size: 16px;
 }

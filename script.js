@@ -34,7 +34,7 @@ function getDeleteBtnElement(task) {
     return deleteTaskEl;
 }
 
-// Loo funktsioon, mis tagastab edit button elemendi       !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// Loo funktsioon, mis tagastab edit button elemendi
 function getEditBtnElement() {
     // loo list element ülesande kustutamise nupu jaoks
     const editTaskEl = document.createElement("li");
@@ -46,29 +46,53 @@ function getEditBtnElement() {
     editTaskIconEl.onclick = () => getModal();
     
     editTaskEl.appendChild(editTaskIconEl)
-    // tagasta deleteTaskEl i element
+    // tagasta editTaskEl i element
     return editTaskEl;
 }
 
 function getModal() {
-    const modalEl = document.querySelector(".modal");
-    const editTaskBtnEl = getEditBtnElement();
+    const modalEl = document.querySelector(".modalOverlay");
+
+    const showModalEl = () => {
+        modalEl.style.display = "flex";
+    }
+
     const closeModalBtnEl = document.querySelector(".modalCloseButton");
 
-    editTaskBtnEl.onclick = function() {
-        modalEl.style.visibility = "visible";
+    const hideModalEl = () => {
+        editTaskBtnEl.style.display = 'none';
     }
 
-    closeModalBtnEl.onclick = function() {
-        modalEl.style.visibility = "hidden";
-    }
+    closeModalBtnEl.addEventListener("click", hideModalEl);
 
-    window.onclick = function(event) {
-        if (event.target == modalEl) {
-            modalEl.style.display = "none";
+    const hideModalOnBlur = (e) => {
+        if(e.target === e.currentTarget) {
+            hideModalEl();
         }
     }
+
+    modalEl.addEventListener("click", hideModalOnBlur)
+
+
+    // console.log("editTaskBtnEl", editTaskBtnEl);
+    
+    // editTaskBtnEl.onclick = function() {
+    //     console.log("clicking on edit task button");
+    //     modalEl.style.visibility = "visible";
+    // }
+
+    // closeModalBtnEl.onclick = function() {
+    //     modalEl.style.display = "hidden";
+    // }
+
+    // // window.addEventListener("click", function(event) {
+    // //     if (event.target === modalEl) {
+    // //         modalEl.style.visibility = "hidden";
+    // //     }
+    // // }) 
+
 }
+
 
 // Loo funktsioon, mis tagastab task title elemendi
 function getTaskTitleElement(taskTitle) {
