@@ -52,26 +52,20 @@ function getEditBtnElement() {
 
 function getModal() {
     const modalEl = document.querySelector(".modalOverlay");
-
+    const editTaskBtnEl = getEditBtnElement();
     const showModalEl = () => {
         modalEl.style.display = "flex";
     }
 
+    editTaskBtnEl.addEventListener("click", showModalEl);
+
     const closeModalBtnEl = document.querySelector(".modalCloseButton");
 
-    const hideModalEl = () => {
-        editTaskBtnEl.style.display = 'none';
+    const closeModalEl = () => {
+        modalEl.style.display = 'none';
     }
 
-    closeModalBtnEl.addEventListener("click", hideModalEl);
-
-    const hideModalOnBlur = (e) => {
-        if(e.target === e.currentTarget) {
-            hideModalEl();
-        }
-    }
-
-    modalEl.addEventListener("click", hideModalOnBlur)
+    closeModalBtnEl.addEventListener("click", closeModalEl);
 
 
     // console.log("editTaskBtnEl", editTaskBtnEl);
