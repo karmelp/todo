@@ -53,15 +53,15 @@ function getEditBtnElement() {
 function getModal() {
     const modalEl = document.querySelector(".modalOverlay");
     const editTaskBtnEl = getEditBtnElement();
-    const showModalEl = () => {
+    const showModalEl = function() {
         modalEl.style.display = "flex";
     }
 
-    editTaskBtnEl.addEventListener("click", showModalEl);
+    // editTaskBtnEl.addEventListener("click", showModalEl);
 
     const closeModalBtnEl = document.querySelector(".modalCloseButton");
 
-    const closeModalEl = () => {
+    const closeModalEl = function() {
         modalEl.style.display = 'none';
     }
 
