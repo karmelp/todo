@@ -21,6 +21,8 @@ body {
 
 .application {
     width: 100%;
+    position: fixed;
+    top: 20%;
 }
 
 h1 {

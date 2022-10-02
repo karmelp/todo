@@ -84,7 +84,6 @@ function getModal() {
     // //         modalEl.style.visibility = "hidden";
     // //     }
     // // }) 
-
 }
 
 
