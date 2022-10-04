@@ -43,44 +43,43 @@ function getEditBtnElement() {
     // lisa editTaskIconEl i elemendile klass
     editTaskIconEl.className = "fa-solid fa-pen-to-square button editTaskBtn";
     // lisa editTaskIconEl i elemendile onclick funktsioon
-    editTaskIconEl.onclick = () => {console.log('clicking on edit task icon element'); getModal();}
+    editTaskIconEl.onclick = () => getModal();
     
     editTaskEl.appendChild(editTaskIconEl)
     // tagasta editTaskEl i element
     return editTaskIconEl;
 }
 
+const modalEl = document.querySelector(".modalOverlay");
 function getModal() {
-    const modalEl = document.querySelector(".modalOverlay");
-    const editTaskBtnEl = getEditBtnElement();
-    const showModalEl = function() {
-        modalEl.style.display = "flex";
+    modalEl.style.display = "flex";
+    closeModal()
+}
+
+function closeModal() {
+    const closeModalBtnEl = document.querySelector(".modalCloseButton")
+    closeModalBtnEl.onclick = function() {
+        modalEl.style.display = "none";
     }
+}
 
-    editTaskBtnEl.addEventListener("click", showModalEl);
+function editTask() {
+    // const editedTaskTitle = document.getElementById("editTaskInput").value;
+    // // lisa newTaskField input väärtus arraysse objektina
+    // tasks.push({ title: taskTitle, isDone: false });
 
-    const closeModalBtnEl = document.querySelector(".modalCloseButton");
+    // tasks.map((task) => {
+    //     // kui taski title on see, millel klikiti...
+    //     if (task.title === el.getAttribute("task-title")) {
+    //         // muuda taski nimi uueks
+    //         task.title = editedTaskTitle
+    //     }
+    // });
 
-    const closeModalEl = function() {
-        modalEl.style.display = 'none';
-    }
-
-    closeModalBtnEl.addEventListener("click", closeModalEl);
-    
-    // editTaskBtnEl.onclick = function() {
-    //     console.log("clicking on edit task button");
-    //     modalEl.style.visibility = "visible";
-    // }
-
-    // closeModalBtnEl.onclick = function() {
-    //     modalEl.style.display = "hidden";
-    // }
-
-    // // window.addEventListener("click", function(event) {
-    // //     if (event.target === modalEl) {
-    // //         modalEl.style.visibility = "hidden";
-    // //     }
-    // // }) 
+    closeModal();
+  
+    // // joonista uuesti kõik ülesanded
+    // showAllTasks();
 }
 
 
@@ -263,14 +262,9 @@ function getTaskListMessage() {
     taskListEl.appendChild(taskListMessageContainerEl);
 }
 
-// Kasutaja saab muuta ülesannet.
-function getModal() {
 
-}
-
-function editTask() {
-
-}
+// vajutades .editTaskSaveBtn'it aktiveerub editTask funktsioon
+document.querySelector(".editTaskSaveBtn").onclick = editTask;
 
 // vajutades .deleteAllTasksBtn'it aktiveerub deleteAllTasks funktsioon
 document.querySelector(".deleteAllTasks").onclick = deleteAllTasks;
