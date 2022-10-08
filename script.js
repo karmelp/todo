@@ -35,13 +35,15 @@ function getDeleteBtnElement(task) {
 }
 
 // Loo funktsioon, mis tagastab edit button elemendi
-function getEditBtnElement() {
+function getEditBtnElement(task) {
     // loo list element ülesande kustutamise nupu jaoks
     const editTaskEl = document.createElement("li");
     // loo i element ülesande muutmise nupu ikooni jaoks
     const editTaskIconEl = document.createElement("i");
     // lisa editTaskIconEl i elemendile klass
     editTaskIconEl.className = "fa-solid fa-pen-to-square button editTaskBtn";
+    // lisa editTaskIconEl i elemendile pealkirja atribuut
+    editTaskIconEl.setAttribute("task-title", task.title);
     // lisa editTaskIconEl i elemendile onclick funktsioon
     editTaskIconEl.onclick = () => getModal();
     
@@ -63,23 +65,21 @@ function closeModal() {
     }
 }
 
-function editTask() {
-    // const editedTaskTitle = document.getElementById("editTaskInput").value;
-    // // lisa newTaskField input väärtus arraysse objektina
-    // tasks.push({ title: taskTitle, isDone: false });
-
-    // tasks.map((task) => {
-    //     // kui taski title on see, millel klikiti...
-    //     if (task.title === el.getAttribute("task-title")) {
-    //         // muuda taski nimi uueks
-    //         task.title = editedTaskTitle
-    //     }
-    // });
-
-    closeModal();
+function editTask(taskTitle) {
+    const editedTaskTitle = document.getElementById("editTaskInput").value;
+    const editTaskSaveBtnEl = document.getElementsByClassName("editTaskSaveBtn");
+    const titleAttribute = getEditBtnElement()
+    editTaskSaveBtnEl.onclick = tasks.map((task) => {
+        // kui taski title on see, millel klikiti...
+        if (task.title === titleAttribute.getAttribute("task-title")) {
+            // muuda taski nimi uueks
+            task.title = editedTaskTitle
+        }
+        modalEl.style.display = "none";
+    });
   
-    // // joonista uuesti kõik ülesanded
-    // showAllTasks();
+    // joonista uuesti kõik ülesanded
+    showAllTasks();
 }
 
 
@@ -115,7 +115,7 @@ function showTask(task) {
     // kasuta getTaskTitleElement funktsiooni showTask funkstiooni sees
     const taskTitleEl = getTaskTitleElement(task.title);
     // kasuta editTaskEl funktsiooni showTask funkstiooni sees
-    const editTaskEl = getEditBtnElement();
+    const editTaskEl = getEditBtnElement(task);
     // kasuta getDeleteBtnElement funktsiooni showTask funkstiooni sees
     const deleteTaskEl = getDeleteBtnElement(task);
     // loo unordered list element ülesande tööriistade jaoks
