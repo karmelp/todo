@@ -266,10 +266,11 @@ function hideDeleteDoneTasksBtn() {
 function deleteDoneTasks(task) {
     // käi läbi kõik taskid
     tasks.map((task) => {
-        // kui taski title on see, millel klikiti...
+        // kui task isDone väärtus on true
         if (task.isDone === true) {
-        // muuda taski staatus vastupidiseks
+            // uuri välja selle index arrays
             const deleteIndex = tasks.indexOf(task);
+            // ja eemalda see
             tasks.splice(deleteIndex,1);
         }
     });
