@@ -230,7 +230,7 @@ function showNumberOfDoneTasks() {
 function deleteTask(task) {
     const deleteIndex = tasks.indexOf(task);
     tasks.splice(deleteIndex, 1);
-  
+
     // joonista uuesti kõik ülesanded
     showAllTasks();
     // joonista uuesti mitu ülesannet tehtud on
@@ -263,14 +263,16 @@ function hideDeleteDoneTasksBtn() {
     deleteDoneTasksBtn.style.display = "none";
 }
 
-function deleteDoneTasks() {
-    const deleteAllDoneTasks = tasks.filter(task => {
-        return !task.isDone;
+function deleteDoneTasks(task) {
+    // käi läbi kõik taskid
+    tasks.map((task) => {
+        // kui taski title on see, millel klikiti...
+        if (task.isDone === true) {
+        // muuda taski staatus vastupidiseks
+            const deleteIndex = tasks.indexOf(task);
+            tasks.splice(deleteIndex,1);
+        }
     });
-
-    tasks.splice(tasks, deleteAllDoneTasks.length)
-
-    console.log(deleteAllDoneTasks)
 
     // joonista uuesti kõik ülesanded
     showAllTasks();
