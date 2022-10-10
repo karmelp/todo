@@ -268,7 +268,7 @@ function deleteDoneTasks() {
         return !task.isDone;
     });
 
-    tasks.splice(deleteAllDoneTasks.length)
+    tasks.splice(tasks, deleteAllDoneTasks.length)
 
     console.log(deleteAllDoneTasks)
 
