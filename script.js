@@ -264,13 +264,13 @@ function hideDeleteDoneTasksBtn() {
 }
 
 function deleteDoneTasks() {
-    const filterOutAllDoneTasks = tasks.filter(task => {
+    const deleteAllDoneTasks = tasks.filter(task => {
         return !task.isDone;
     });
 
-    tasks.splice(filterOutAllDoneTasks)
+    tasks.splice(deleteAllDoneTasks.length)
 
-    console.log(filterOutAllDoneTasks)
+    console.log(deleteAllDoneTasks)
 
     // joonista uuesti kõik ülesanded
     showAllTasks();
