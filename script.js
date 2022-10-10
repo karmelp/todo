@@ -214,6 +214,12 @@ function showNumberOfDoneTasks() {
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].isDone === true) doneTasksCounter++;
     }
+
+    if (doneTasksCounter > 0) {
+        showDeleteDoneTasksBtn();
+    } else {
+        hideDeleteDoneTasksBtn();
+    }
   
     // sisesta doneTasksCount elemendi sisse number
     doneTasksCount.textContent = doneTasksCounter;
@@ -247,14 +253,13 @@ function deleteAllTasks() {
 }
 
 // Kasutaja saab kõik tehtud ülesanded korraga kiustutada
-  
-// function showDeleteDoneTasksBtn(tasks) {
-//     tasks = tasks.map((task) => {
-//         if (task.isDone === true) {
-//             deleteDoneTasksBtnEl.style.display = "flex";
-//         }
-//     });
-// }
+const deleteDoneTasksBtnEl = document.querySelector(".deleteDoneTasksBtn");
+function showDeleteDoneTasksBtn() {
+    deleteDoneTasksBtnEl.style.display = "flex";
+}
+function hideDeleteDoneTasksBtn() {
+    deleteDoneTasksBtnEl.style.display = "none";
+}
 
 function deleteDoneTasks(task) {
     const deleteAllDoneTasks = tasks.filter(task => {
@@ -294,7 +299,7 @@ function getTaskListMessage() {
 }
   
 // vajutades .deleteDoneTasksBtn'it aktiveerub deleteDoneTasks funktsioon
-document.querySelector(".deleteDoneTasksBtn").onclick = deleteDoneTasks;
+deleteDoneTasksBtnEl.onclick = deleteDoneTasks;
 
 // vajutades .deleteAllTasksBtn'it aktiveerub deleteAllTasks funktsioon
 document.querySelector(".deleteAllTasks").onclick = deleteAllTasks;
