@@ -257,15 +257,6 @@ function deleteAllTasks() {
 // }
 
 function deleteDoneTasks(task) {
-
-    // tasks.map((task) => {
-    //     // kui taski title on see, millel klikiti...
-    //     if (task.title === el.getAttribute("task-title")) {
-    //     // muuda taski staatus vastupidiseks
-    //     task.isDone = !task.isDone;
-    //     }
-    // });
-
     const deleteAllDoneTasks = tasks.filter(task => {
         return task.isDone !== "true";
     });
