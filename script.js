@@ -1,11 +1,11 @@
 // Array
-const tasks = [
-    {title: 'Exercise 1', isDone: true},
-    {title: 'Exercise 2', isDone: false},
-];
-
-// Loo funktsioon, mis tagastab status button elemendi
-function getStatusBtnElement(task) {
+let tasks = [
+    { title: "Exercise 1", isDone: true },
+    { title: "Exercise 2", isDone: false },
+  ];
+  
+  // Loo funktsioon, mis tagastab status button elemendi
+  function getStatusBtnElement(task) {
     // loo i element ülesande staatuse nupu ikooni jaoks
     const statusIconEl = document.createElement("i");
     // lisa statusIconEl i elemendile klass
@@ -17,10 +17,10 @@ function getStatusBtnElement(task) {
   
     // tagasta statusIconEl i element
     return statusIconEl;
-}
-
-// Loo funktsioon, mis tagastab delete button elemendi 
-function getDeleteBtnElement(task) {
+  }
+  
+  // Loo funktsioon, mis tagastab delete button elemendi
+  function getDeleteBtnElement(task) {
     // loo list element ülesande kustutamise nupu jaoks
     const deleteTaskEl = document.createElement("li");
     // loo i element ülesande kustutamise nupu ikooni jaoks
@@ -28,83 +28,88 @@ function getDeleteBtnElement(task) {
     deleteTaskIconEl.className = "fa-solid fa-trash button deleteTaskBtn";
     // lisa deleteTaskIconEl i elemendile onclick funktsioon
     deleteTaskIconEl.onclick = () => deleteTask(task);
-    
-    deleteTaskEl.appendChild(deleteTaskIconEl)
+  
+    deleteTaskEl.appendChild(deleteTaskIconEl);
     // tagasta deleteTaskEl i element
     return deleteTaskEl;
-}
-
-// Loo funktsioon, mis tagastab edit button elemendi
-function getEditBtnElement(task) {
+  }
+  
+  // Loo funktsioon, mis tagastab edit button elemendi
+  function getEditBtnElement(task) {
     // loo list element ülesande kustutamise nupu jaoks
     const editTaskEl = document.createElement("li");
     // loo i element ülesande muutmise nupu ikooni jaoks
-    const editTaskIconEl = document.createElement("i");
-    // lisa editTaskIconEl i elemendile klass
-    editTaskIconEl.className = "fa-solid fa-pen-to-square button editTaskBtn";
-    // lisa editTaskIconEl i elemendile pealkirja atribuut
-    editTaskIconEl.setAttribute("task-title", task.title);
-    // lisa editTaskIconEl i elemendile onclick funktsioon
-    editTaskIconEl.onclick = () => getModal();
-    
-    editTaskEl.appendChild(editTaskIconEl)
-    // tagasta editTaskEl i element
-    return editTaskIconEl;
-}
-
-const modalEl = document.querySelector(".modalOverlay");
-function getModal() {
-    modalEl.style.display = "flex";
-    closeModal()
-}
-
-function closeModal() {
-    const closeModalBtnEl = document.querySelector(".modalCloseButton")
-    closeModalBtnEl.onclick = function() {
-        modalEl.style.display = "none";
-    }
-}
-
-function editTask(taskTitle) {
-    const editedTaskTitle = document.getElementById("editTaskInput").value;
-    const editTaskSaveBtnEl = document.getElementsByClassName("editTaskSaveBtn");
-    const titleAttribute = getEditBtnElement()
-    editTaskSaveBtnEl.onclick = tasks.map((task) => {
-        // kui taski title on see, millel klikiti...
-        if (task.title === titleAttribute.getAttribute("task-title")) {
-            // muuda taski nimi uueks
-            task.title = editedTaskTitle
-        }
-        modalEl.style.display = "none";
-    });
+    const editTaskTitleBtn = document.createElement("i");
+    // lisa editTaskTitleBtn i elemendile klass
+    editTaskTitleBtn.className = "fa-solid fa-pen-to-square button editTaskBtn";
+    // lisa editTaskTitleBtn i elemendile pealkirja atribuut
+    editTaskTitleBtn.setAttribute("task-title", task.title);
+    // lisa editTaskTitleBtn i elemendile onclick funktsioon
+    editTaskTitleBtn.onclick = onEditTaskTitleBtnClick;
   
-    // joonista uuesti kõik ülesanded
+    editTaskEl.appendChild(editTaskTitleBtn);
+    // tagasta editTaskEl i element
+    return editTaskTitleBtn;
+  }
+
+  const modalEl = document.querySelector(".modalOverlay");
+  
+  function showModal() {
+    modalEl.style.display = "flex";
+  }
+  
+  function closeModal() {
+    modalEl.style.display = "none";
+  }
+  
+  function onEditTaskTitleBtnClick(event) {
+    const oldTaskTitle = event.target.getAttribute("task-title");
+    showModal();
+  
+    document.querySelector(".saveNewTaskTitleBtn").onclick = () => {
+      const editedTaskTitle = document.getElementById("editTaskInput").value;
+  
+      onSaveNewTaskTitleBtn(oldTaskTitle, editedTaskTitle);
+    };
+  }
+  
+  function onSaveNewTaskTitleBtn(oldTaskTitle, editedTaskTitle) {
+    tasks = tasks.map((task) => {
+      if (task.title === oldTaskTitle) {
+        return { title: editedTaskTitle, isDone: task.isDone };
+      } else {
+        return task;
+      }
+    });
+    // tühjenda input editTaskInput field peale uue ülesande lisamist
+    document.getElementById("editTaskInput").value = "";
+  
+    closeModal();
     showAllTasks();
-}
-
-
-// Loo funktsioon, mis tagastab task title elemendi
-function getTaskTitleElement(taskTitle) {
+  }
+  
+  // Loo funktsioon, mis tagastab task title elemendi
+  function getTaskTitleElement(taskTitle) {
     // loo div element ülesande pealkirja jaoks
     const taskTitleEl = document.createElement("div");
     // lisa taskTitleEl div elemendile pealkirja atribuut
     taskTitleEl.setAttribute("task-title", taskTitle);
     // pane taskTitleEl div elemendi sisse ülesande pealkiri
     taskTitleEl.textContent = taskTitle;
-    
+  
     // tagasta taskTitleEl div element
     return taskTitleEl;
-}
-
-// Loo funktsioon, mis paneb tehtuks märgitud taskile teised stiilid
-function markTaskAsDone(statusIcon, taskTitle) {
+  }
+  
+  // Loo funktsioon, mis paneb tehtuks märgitud taskile teised stiilid
+  function markTaskAsDone(statusIcon, taskTitle) {
     statusIcon.style.color = "#42b883";
     taskTitle.style.textDecoration = "line-through";
     taskTitle.style.textDecorationThickness = "2px";
-}
-
-// Kasutaja saab lugeda kõiki ülesandeid - pealkirja ja staatust
-function showTask(task) {
+  }
+  
+  // Kasutaja saab lugeda kõiki ülesandeid - pealkirja ja staatust
+  function showTask(task) {
     // võta HTMList ülesannete konteinerelement
     const taskListEl = document.querySelector(".taskList");
     const taskListItemContainerEl = document.createElement("div");
@@ -125,8 +130,8 @@ function showTask(task) {
   
     // kui task on tehtud
     if (task.isDone) {
-        // kasuta markTaskAsDone funktsiooni
-        markTaskAsDone(taskStatusEl, taskTitleEl);
+      // kasuta markTaskAsDone funktsiooni
+      markTaskAsDone(taskStatusEl, taskTitleEl);
     }
   
     // pane deleteTaskEl element taskToolsEl elemendi sisse
@@ -135,73 +140,73 @@ function showTask(task) {
     taskListItemContainerEl.append(taskStatusEl, taskTitleEl, taskToolsEl);
     // kasuta el.appendChild(), kui on elemendile vaja panna üks laps
     taskListEl.appendChild(taskListItemContainerEl);
-}
-
-// Kasutaja saab märkida ülesande tehtuks.
-function toggleTaskStatus(el) {
+  }
+  
+  // Kasutaja saab märkida ülesande tehtuks.
+  function toggleTaskStatus(el) {
     // käi läbi kõik taskid
     tasks.map((task) => {
-        // kui taski title on see, millel klikiti...
-        if (task.title === el.getAttribute("task-title")) {
-            // muuda taski staatus vastupidiseks
-            task.isDone = !task.isDone;
-        }
+      // kui taski title on see, millel klikiti...
+      if (task.title === el.getAttribute("task-title")) {
+        // muuda taski staatus vastupidiseks
+        task.isDone = !task.isDone;
+      }
     });
   
     // joonista uuesti kõik tehtud ülesanded
     showNumberOfDoneTasks();
     // joonista uuesti kõik ülesanded
     showAllTasks();
-}
-
-// Kasutaja näeb kõiki ülesandeid
-function showAllTasks() {
+  }
+  
+  // Kasutaja näeb kõiki ülesandeid
+  function showAllTasks() {
     //tühjenda HTMLis taskide konteiner
     const taskListEl = document.querySelector(".taskList");
     taskListEl.innerHTML = "";
-
+  
     // kui ülesandeid pole
     if (tasks.length == 0) {
-        // käivita getTaskListMessage funktsioon
-        getTaskListMessage()
+      // käivita getTaskListMessage funktsioon
+      getTaskListMessage();
     }
-
+  
     // joonista HTML element iga taski jaoks
     tasks.forEach((task) => {
-        showTask(task);
+      showTask(task);
     });
-}
-
-// Kasutaja saab lisada uue ülesande.
-function onAddNewTaskBtnClick() {
+  }
+  
+  // Kasutaja saab lisada uue ülesande.
+  function onAddNewTaskBtnClick() {
     // kui newTaskField input on tühi...
     if (document.querySelector(".newTaskField input").value.length == 0) {
-        // siis ütle inimesele, et tühjana ei saa ülesannet lisada
-        alert("Write a task first!");
+      // siis ütle inimesele, et tühjana ei saa ülesannet lisada
+      alert("Write a task first!");
     } else {
-        // võta newTaskField input väärtus
-        const taskTitle = document.getElementById("newTaskInput").value;
-        // lisa newTaskField input väärtus arraysse objektina
-        tasks.push({ title: taskTitle, isDone: false });
-        // joonista uuesti tehtud ülesannete number
-        showNumberofAllTasks();
-        // joonista uuesti kõik ülesanded
-        showAllTasks();
+      // võta newTaskField input väärtus
+      const taskTitle = document.getElementById("newTaskInput").value;
+      // lisa newTaskField input väärtus arraysse objektina
+      tasks.push({ title: taskTitle, isDone: false });
+      // joonista uuesti tehtud ülesannete number
+      showNumberofAllTasks();
+      // joonista uuesti kõik ülesanded
+      showAllTasks();
     }
-    // tühjenda input newTaskInput field peale uue ülesande lisamist 
+    // tühjenda input newTaskInput field peale uue ülesande lisamist
     document.getElementById("newTaskInput").value = "";
-}
-
+  }
+  
   // Kasutaja näeb, mitu on ülesandeid kokku.
-function showNumberofAllTasks() {
+  function showNumberofAllTasks() {
     // võta HTMList allTasksCount klass
     const allTasksCount = document.querySelector(".allTasksCount");
     // sisesta allTasksCount elemendi sisse number
     allTasksCount.textContent = tasks.length;
-}
-
+  }
+  
   // Kasutaja näeb, mitu ülesannet on tehtud.
-function showNumberOfDoneTasks() {
+  function showNumberOfDoneTasks() {
     // võta HTMList doneTasksCount klass
     const doneTasksCount = document.querySelector(".doneTasksCount");
     //for loop, et loendada kokku tehtud ülesanded
@@ -212,10 +217,10 @@ function showNumberOfDoneTasks() {
   
     // sisesta doneTasksCount elemendi sisse number
     doneTasksCount.textContent = doneTasksCounter;
-}
-
-// Kasutaja saab ülesande kustutada.
-function deleteTask(task) {
+  }
+  
+  // Kasutaja saab ülesande kustutada.
+  function deleteTask(task) {
     const deleteIndex = tasks.indexOf(task);
     tasks.splice(deleteIndex, 1);
   
@@ -225,28 +230,25 @@ function deleteTask(task) {
     showNumberOfDoneTasks();
     // joonista uuesti mitu ülesannet on kokku
     showNumberofAllTasks();
-}
-
-// Kasutaja saab kõik ülesanded korraga ära kustutada.
-function deleteAllTasks() {
+  }
+  
+  // Kasutaja saab kõik ülesanded korraga ära kustutada.
+  function deleteAllTasks() {
     const deleteIndex = tasks;
     tasks.splice(deleteIndex, tasks.length);
-
-    
+  
     // joonista uuesti kõik ülesanded
     showAllTasks();
     // joonista uuesti mitu ülesannet tehtud on
     showNumberOfDoneTasks();
     // joonista uuesti mitu ülesannet on kokku
     showNumberofAllTasks();
-}
-
-
-
-// Teadaanne, kui ülesandeid pole
-function getTaskListMessage() {
+  }
+  
+  // Teadaanne, kui ülesandeid pole
+  function getTaskListMessage() {
     // võta HTMList ülesannete konteinerelement
-    const taskListEl = document.querySelector(".taskList"); 
+    const taskListEl = document.querySelector(".taskList");
     // loo div element sõnumi jaoks
     const taskListMessageContainerEl = document.createElement("div");
     // lisa taskListMessageContainerEl div elemendile klass
@@ -255,27 +257,29 @@ function getTaskListMessage() {
     const taskListMessageTextEl = document.createElement("p");
     taskListMessageTextEl.innerHTML = "Your task list is empty";
     const taskListMessageIconEl = document.createElement("i");
-    taskListMessageIconEl.className = "fa-solid fa-clipboard-check taskListMessageIcon";
-
-    taskListMessageContainerEl.append(taskListMessageTextEl, taskListMessageIconEl)
+    taskListMessageIconEl.className =
+      "fa-solid fa-clipboard-check taskListMessageIcon";
+  
+    taskListMessageContainerEl.append(
+      taskListMessageTextEl,
+      taskListMessageIconEl
+    );
     // pane taskListMessageContainerEl element taskListEl elemendi sisse
     taskListEl.appendChild(taskListMessageContainerEl);
-}
-
-
-// vajutades .editTaskSaveBtn'it aktiveerub editTask funktsioon
-document.querySelector(".editTaskSaveBtn").onclick = editTask;
-
-// vajutades .deleteAllTasksBtn'it aktiveerub deleteAllTasks funktsioon
-document.querySelector(".deleteAllTasks").onclick = deleteAllTasks;
-
-// vajutades .addNewTaskButton'it aktiveerub onAddNewTaskBtnClick funktsioon
-document.querySelector(".addNewTaskButton").onclick = onAddNewTaskBtnClick;
-
-// näita kohe, kui kasutaja äppi saabub, mitu ülesannet nimekirjas on
-showNumberofAllTasks();
-// näita kohe, kui kasutaja äppi saabub, mitu ülesannet tehtud on
-showNumberOfDoneTasks();
-showAllTasks();
-
-// Kasutaja saab korraga kustutada köik tehtud ülesanded.
+  }
+  
+  // vajutades .deleteAllTasksBtn'it aktiveerub deleteAllTasks funktsioon
+  document.querySelector(".deleteAllTasks").onclick = deleteAllTasks;
+  
+  // vajutades .addNewTaskButton'it aktiveerub onAddNewTaskBtnClick funktsioon
+  document.querySelector(".addNewTaskButton").onclick = onAddNewTaskBtnClick;
+  
+  document.querySelector(".modalCloseButton").onclick = closeModal;
+  
+  // näita kohe, kui kasutaja äppi saabub, mitu ülesannet nimekirjas on
+  showNumberofAllTasks();
+  // näita kohe, kui kasutaja äppi saabub, mitu ülesannet tehtud on
+  showNumberOfDoneTasks();
+  showAllTasks();
+  
+  // Kasutaja saab korraga kustutada köik tehtud ülesanded.
