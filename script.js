@@ -253,18 +253,18 @@ function deleteAllTasks() {
 }
 
 // Kasutaja saab kõik tehtud ülesanded korraga kiustutada
-const deleteDoneTasksBtnEl = document.querySelector(".deleteDoneTasksBtn");
+const deleteDoneTasksBtn = document.querySelector(".deleteDoneTasksBtn");
+
 function showDeleteDoneTasksBtn() {
-    deleteDoneTasksBtnEl.style.display = "flex";
-}
-function hideDeleteDoneTasksBtn() {
-    deleteDoneTasksBtnEl.style.display = "none";
+    deleteDoneTasksBtn.style.display = "flex";
 }
 
-function deleteDoneTasks(task) {
-    const deleteAllDoneTasks = tasks.filter(task => {
-        return task.isDone !== "true";
-    });
+function hideDeleteDoneTasksBtn() {
+    deleteDoneTasksBtn.style.display = "none";
+}
+
+function deleteDoneTasks() {
+    const deleteAllDoneTasks = tasks.filter(task => task.isDone !== "true");
     console.log(deleteAllDoneTasks);
 
     // joonista uuesti kõik ülesanded
@@ -299,7 +299,7 @@ function getTaskListMessage() {
 }
   
 // vajutades .deleteDoneTasksBtn'it aktiveerub deleteDoneTasks funktsioon
-deleteDoneTasksBtnEl.onclick = deleteDoneTasks;
+deleteDoneTasksBtn.onclick = deleteDoneTasks;
 
 // vajutades .deleteAllTasksBtn'it aktiveerub deleteAllTasks funktsioon
 document.querySelector(".deleteAllTasks").onclick = deleteAllTasks;
