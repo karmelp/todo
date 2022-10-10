@@ -275,6 +275,12 @@ function deleteDoneTasks(task) {
         }
     });
 
+    // const filteredTasks = tasks.filter((task) => {
+    //     return !task.isDone;
+    //   });
+    //   //kirjuta üle eelmised taskid
+    //   tasks = filteredTasks
+
     // joonista uuesti kõik ülesanded
     showAllTasks();
     // joonista uuesti mitu ülesannet tehtud on
