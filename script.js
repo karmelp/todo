@@ -1,7 +1,7 @@
 // Array
 let tasks = [
-    { title: "Exercise 1", isDone: true },
-    { title: "Exercise 2", isDone: false },
+    // { title: "Exercise 1", isDone: true },
+    // { title: "Exercise 2", isDone: false },
 ];
   
 // Loo funktsioon, mis tagastab status button elemendi
